@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard — FOIS Intelligence</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --midnight: #0B1F33; --ivory: #F8F7F3; --gold: #C8A96A; --gold-light: #d4b87a;
+            --graphite: #2E3135; --stone: #D8D7D2; --stone-light: #E8E7E2; --slate: #5F6770;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--stone-light); color: var(--graphite); -webkit-font-smoothing: antialiased; }
+        .concept-flag { background: var(--midnight); color: rgba(248,247,243,0.7); text-align: center; padding: 0.7rem; font-family: 'Inter', sans-serif; font-size: 0.76rem; letter-spacing: 0.04em; }
+        .concept-flag strong { color: var(--gold); }
+
+        .shell { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
+        @media (max-width: 900px) { .shell { grid-template-columns: 1fr; } }
+
+        /* Sidebar */
+        .sidebar { background: var(--midnight); color: var(--ivory); padding: 2.2rem 1.6rem; }
+        .sidebar-logo { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; margin-bottom: 2.5rem; display: block; text-decoration: none; color: var(--ivory); }
+        .sidebar-logo em { color: var(--gold); font-style: italic; }
+        .sidebar-nav { list-style: none; }
+        .sidebar-nav li a { display: flex; align-items: center; gap: 0.8rem; padding: 0.85rem 0.9rem; text-decoration: none; color: rgba(248,247,243,0.6); font-family: 'Inter', sans-serif; font-size: 0.86rem; border-radius: 3px; margin-bottom: 0.2rem; transition: all 0.25s ease; }
+        .sidebar-nav li a:hover, .sidebar-nav li a.active { background: rgba(200,169,106,0.12); color: var(--ivory); }
+        .sidebar-nav li a.active { border-left: 2px solid var(--gold); }
+        .sidebar-nav .dot { width: 5px; height: 5px; border-radius: 50%; background: var(--gold); flex-shrink: 0; }
+        .sidebar-member { margin-top: 2.5rem; padding-top: 1.5rem; border-top: 1px solid rgba(248,247,243,0.1); font-family: 'Inter', sans-serif; }
+        .sidebar-member-tier { font-size: 0.68rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+        .sidebar-member-name { font-size: 0.86rem; }
+
+        /* Main */
+        .main { padding: 2.8rem 3.2rem; }
+        @media (max-width: 700px) { .main { padding: 2rem 1.4rem; } }
+        .dash-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2.5rem; flex-wrap: wrap; gap: 1rem; }
+        .dash-title { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; }
+        .dash-title em { color: var(--gold); font-style: italic; }
+        .dash-sub { font-family: 'Inter', sans-serif; font-size: 0.86rem; color: var(--slate); margin-top: 0.3rem; }
+        .dash-search { padding: 0.8rem 1.4rem; border: 1px solid var(--stone); background: #fff; font-family: 'Inter', sans-serif; font-size: 0.84rem; width: 260px; }
+
+        .dash-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 1.6rem; margin-bottom: 1.6rem; }
+        @media (max-width: 900px) { .dash-grid { grid-template-columns: 1fr; } }
+
+        .card { background: #fff; border: 1px solid var(--stone); padding: 1.8rem; }
+        .card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 400; margin-bottom: 1.3rem; display: flex; justify-content: space-between; align-items: center; }
+        .card h3 a { font-family: 'Inter', sans-serif; font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); text-decoration: none; }
+
+        /* Reading list rows */
+        .read-row { display: flex; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--stone-light); align-items: center; }
+        .read-row:last-child { border-bottom: none; }
+        .read-thumb { width: 52px; height: 52px; background: var(--stone-light); flex-shrink: 0; background-size: cover; background-position: center; }
+        .read-info { flex: 1; }
+        .read-title { font-family: 'Inter', sans-serif; font-size: 0.88rem; margin-bottom: 0.25rem; }
+        .read-meta { font-family: 'Inter', sans-serif; font-size: 0.72rem; color: var(--slate); }
+        .progress-bar { width: 100%; height: 3px; background: var(--stone-light); margin-top: 0.4rem; }
+        .progress-fill { height: 100%; background: var(--gold); }
+        .bookmark-icon { color: var(--gold); font-size: 1rem; flex-shrink: 0; }
+
+        /* Stat mini cards */
+        .stat-mini-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; margin-bottom: 1.6rem; }
+        @media (max-width: 700px) { .stat-mini-row { grid-template-columns: repeat(2, 1fr); } }
+        .stat-mini { background: #fff; border: 1px solid var(--stone); padding: 1.5rem; }
+        .stat-mini-value { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-style: italic; color: var(--gold); }
+        .stat-mini-label { font-family: 'Inter', sans-serif; font-size: 0.76rem; color: var(--slate); margin-top: 0.3rem; }
+
+        /* Topic pills / watchlist */
+        .watchlist-item { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; border-bottom: 1px solid var(--stone-light); font-family: 'Inter', sans-serif; font-size: 0.86rem; }
+        .watchlist-item:last-child { border-bottom: none; }
+        .watchlist-badge { font-size: 0.68rem; color: var(--gold); border: 1px solid var(--gold); padding: 0.25rem 0.6rem; }
+
+        .recommend-card { display: flex; gap: 1rem; padding: 0.9rem 0; border-bottom: 1px solid var(--stone-light); }
+        .recommend-card:last-child { border-bottom: none; }
+        .recommend-tag { font-family: 'Inter', sans-serif; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+        .recommend-title { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; }
+
+        .upcoming-row { display: flex; justify-content: space-between; font-family: 'Inter', sans-serif; font-size: 0.84rem; padding: 0.7rem 0; border-bottom: 1px solid var(--stone-light); }
+        .upcoming-row:last-child { border-bottom: none; }
+        .upcoming-row span:last-child { color: var(--slate); font-size: 0.76rem; }
+    </style>
+</head>
+<body>
+
+    <div class="concept-flag"><strong>Concept preview</strong> — a static UI mockup of the member dashboard. Live data, saved bookmarks and personalisation require the membership/account system to be built.</div>
+
+    <div class="shell">
+        <aside class="sidebar">
+            <a href="/intelligence/" class="sidebar-logo">FOIS <em>Intelligence</em></a>
+            <ul class="sidebar-nav">
+                <li><a href="#" class="active"><span class="dot"></span> Dashboard</a></li>
+                <li><a href="#"><span class="dot" style="background:transparent;"></span> Saved Reports</a></li>
+                <li><a href="#"><span class="dot" style="background:transparent;"></span> Reading List</a></li>
+                <li><a href="#"><span class="dot" style="background:transparent;"></span> Watchlists</a></li>
+                <li><a href="#"><span class="dot" style="background:transparent;"></span> Downloads</a></li>
+                <li><a href="#"><span class="dot" style="background:transparent;"></span> Saved Searches</a></li>
+                <li><a href="#"><span class="dot" style="background:transparent;"></span> Account Settings</a></li>
+                <li><a href="/intelligence/">← Back to FOIS Intelligence</a></li>
+            </ul>
+            <div class="sidebar-member">
+                <div class="sidebar-member-tier">FOIS Professional</div>
+                <div class="sidebar-member-name">Member Dashboard</div>
+            </div>
+        </aside>
+
+        <main class="main">
+            <div class="dash-header">
+                <div>
+                    <h1 class="dash-title">Welcome <em>back</em></h1>
+                    <p class="dash-sub">Here's what's new since your last visit.</p>
+                </div>
+                <input type="text" class="dash-search" placeholder="Search the archive...">
+            </div>
+
+            <div class="stat-mini-row">
+                <div class="stat-mini"><div class="stat-mini-value">3</div><div class="stat-mini-label">Reports in progress</div></div>
+                <div class="stat-mini"><div class="stat-mini-value">12</div><div class="stat-mini-label">Saved reports</div></div>
+                <div class="stat-mini"><div class="stat-mini-value">2</div><div class="stat-mini-label">Watchlists active</div></div>
+                <div class="stat-mini"><div class="stat-mini-value">5</div><div class="stat-mini-label">New this week</div></div>
+            </div>
+
+            <div class="dash-grid">
+                <div>
+                    <div class="card" style="margin-bottom:1.6rem;">
+                        <h3>Continue Reading <a href="#">View all</a></h3>
+                        <div class="read-row">
+                            <div class="read-thumb" style="background-image:url(https://images.unsplash.com/photo-1497366216548-37526070297c?w=100&h=100&fit=crop);"></div>
+                            <div class="read-info">
+                                <div class="read-title">The State of Interior Spaces 2027</div>
+                                <div class="read-meta">62% complete</div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:62%;"></div></div>
+                            </div>
+                        </div>
+                        <div class="read-row">
+                            <div class="read-thumb" style="background-image:url(https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=100&h=100&fit=crop);"></div>
+                            <div class="read-info">
+                                <div class="read-title">The Future Workplace Report</div>
+                                <div class="read-meta">28% complete</div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:28%;"></div></div>
+                            </div>
+                        </div>
+                        <div class="read-row">
+                            <div class="read-thumb" style="background-image:url(https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=100&h=100&fit=crop);"></div>
+                            <div class="read-info">
+                                <div class="read-title">Africa Interior Design Outlook</div>
+                                <div class="read-meta">9% complete</div>
+                                <div class="progress-bar"><div class="progress-fill" style="width:9%;"></div></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Saved & Bookmarked <a href="#">View all (12)</a></h3>
+                        <div class="read-row">
+                            <span class="bookmark-icon">★</span>
+                            <div class="read-info">
+                                <div class="read-title">Material Innovation Index</div>
+                                <div class="read-meta">Saved 3 days ago</div>
+                            </div>
+                        </div>
+                        <div class="read-row">
+                            <span class="bookmark-icon">★</span>
+                            <div class="read-info">
+                                <div class="read-title">AI Adoption in Interior Design</div>
+                                <div class="read-meta">Saved 1 week ago</div>
+                            </div>
+                        </div>
+                        <div class="read-row">
+                            <span class="bookmark-icon">★</span>
+                            <div class="read-info">
+                                <div class="read-title">Opinion: Why Circularity Can't Stay Optional</div>
+                                <div class="read-meta">Saved 2 weeks ago</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="card" style="margin-bottom:1.6rem;">
+                        <h3>Your Watchlists <a href="#">Manage</a></h3>
+                        <div class="watchlist-item">Workplace <span class="watchlist-badge">Industry</span></div>
+                        <div class="watchlist-item">United Kingdom <span class="watchlist-badge">Country</span></div>
+                    </div>
+
+                    <div class="card" style="margin-bottom:1.6rem;">
+                        <h3>Recommended for You</h3>
+                        <div class="recommend-card">
+                            <div><div class="recommend-tag">Materials</div><div class="recommend-title">Material Innovation Index</div></div>
+                        </div>
+                        <div class="recommend-card">
+                            <div><div class="recommend-tag">Workplace</div><div class="recommend-title">The Future Workplace Report</div></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Upcoming Research</h3>
+                        <div class="upcoming-row"><span>Future Cities Report</span><span>2026</span></div>
+                        <div class="upcoming-row"><span>Future Schools</span><span>2026</span></div>
+                        <div class="upcoming-row"><span>Future Healthcare Spaces</span><span>2026</span></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+</body>
+</html>

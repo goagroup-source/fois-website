@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Library — FOIS Intelligence</title>
+    <meta name="description" content="Search and filter the complete FOIS Intelligence research archive by country, industry, topic, year and content type.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        :root {
+            --midnight: #0B1F33; --ivory: #F8F7F3; --gold: #C8A96A; --gold-light: #d4b87a;
+            --graphite: #2E3135; --stone: #D8D7D2; --stone-light: #E8E7E2; --slate: #5F6770;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Inter', sans-serif; background: var(--ivory); color: var(--graphite); cursor: none; -webkit-font-smoothing: antialiased; }
+        .cursor { width: 18px; height: 18px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; mix-blend-mode: difference; }
+        .cursor.hover { transform: scale(2.2); }
+        .cursor-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+
+        nav { position: fixed; top: 0; width: 100%; padding: 1.3rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11,31,51,0.96); backdrop-filter: blur(20px); }
+        .nav-logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); }
+        .nav-logo em { color: var(--gold); font-style: italic; }
+        .nav-back { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,243,0.7); text-decoration: none; border: 1px solid rgba(248,247,243,0.25); padding: 0.65rem 1.4rem; }
+        .nav-back:hover { border-color: var(--gold); color: var(--gold); }
+        @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } }
+
+        .lib-hero { background: var(--midnight); color: var(--ivory); padding: 10rem 5rem 4rem; }
+        @media (max-width: 700px) { .lib-hero { padding: 8.5rem 1.8rem 3rem; } }
+        .section-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; }
+        .lib-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4.5vw, 3.4rem); font-weight: 300; margin-bottom: 1.2rem; }
+        .lib-title em { color: var(--gold); font-style: italic; }
+        .lib-sub { font-family: 'Inter', sans-serif; font-weight: 300; color: rgba(248,247,243,0.6); max-width: 620px; line-height: 1.8; margin-bottom: 2.5rem; }
+        .lib-search { display: flex; max-width: 620px; }
+        .lib-search input { flex: 1; padding: 1.1rem 1.6rem; background: rgba(248,247,243,0.06); border: 1px solid rgba(248,247,243,0.15); border-right: none; color: var(--ivory); font-family: 'Inter', sans-serif; font-size: 0.92rem; outline: none; }
+        .lib-search input::placeholder { color: rgba(248,247,243,0.4); }
+        .lib-search button { padding: 1.1rem 2rem; background: var(--gold); color: var(--midnight); border: none; font-family: 'Inter', sans-serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; }
+
+        .lib-body { display: grid; grid-template-columns: 280px 1fr; gap: 3rem; padding: 4rem 5rem 7rem; max-width: 1500px; margin: 0 auto; }
+        @media (max-width: 1000px) { .lib-body { grid-template-columns: 1fr; padding: 3rem 1.8rem 5rem; } }
+
+        /* Filters */
+        .filters { position: sticky; top: 6rem; align-self: start; }
+        .filter-group { margin-bottom: 2.2rem; }
+        .filter-group h4 { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--slate); margin-bottom: 1rem; }
+        .filter-option { display: flex; align-items: center; gap: 0.7rem; margin-bottom: 0.7rem; cursor: pointer; font-family: 'Inter', sans-serif; font-size: 0.86rem; color: var(--graphite); }
+        .filter-option input { accent-color: var(--gold); width: 15px; height: 15px; cursor: pointer; }
+        .filter-count { color: var(--slate); font-size: 0.78rem; margin-left: auto; }
+        .filter-reset { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--gold); border-bottom: 1px solid var(--gold); padding-bottom: 2px; cursor: pointer; display: inline-block; background: none; border-top: none; border-left: none; border-right: none; margin-top: 0.5rem; }
+
+        /* Results */
+        .results-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem; }
+        .results-count { font-family: 'Inter', sans-serif; font-size: 0.86rem; color: var(--slate); }
+        .results-sort { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--slate); }
+        .results-sort select { font-family: 'Inter', sans-serif; font-size: 0.78rem; border: 1px solid var(--stone); padding: 0.5rem 0.8rem; background: var(--ivory); cursor: pointer; }
+        .results-list { display: flex; flex-direction: column; gap: 0; border-top: 1px solid var(--stone); }
+        .result-row { display: grid; grid-template-columns: 110px 1fr auto; gap: 2rem; padding: 1.8rem 0; border-bottom: 1px solid var(--stone); text-decoration: none; color: inherit; align-items: center; transition: background 0.3s ease; }
+        .result-row:hover { background: rgba(200,169,106,0.05); }
+        @media (max-width: 700px) { .result-row { grid-template-columns: 1fr; gap: 0.6rem; } }
+        .result-type { font-family: 'Inter', sans-serif; font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold); padding: 0.4rem 0.7rem; text-align: center; white-space: nowrap; }
+        .result-title { font-family: 'Cormorant Garamond', serif; font-size: 1.4rem; margin-bottom: 0.4rem; }
+        .result-meta { font-family: 'Inter', sans-serif; font-size: 0.78rem; color: var(--slate); }
+        .result-tags { display: flex; gap: 0.5rem; flex-wrap: wrap; justify-self: end; }
+        @media (max-width: 700px) { .result-tags { justify-self: start; } }
+        .result-tag { font-family: 'Inter', sans-serif; font-size: 0.68rem; color: var(--slate); background: var(--stone-light); padding: 0.35rem 0.7rem; white-space: nowrap; }
+        .no-results { padding: 4rem 0; text-align: center; }
+        .no-results p { font-family: 'Inter', sans-serif; color: var(--slate); margin-bottom: 1.5rem; }
+        .no-results .btn { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; background: var(--midnight); color: var(--ivory); padding: 0.9rem 2rem; border: none; cursor: pointer; }
+
+        footer { background: #060e18; color: rgba(248,247,243,0.4); padding: 3rem 5rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; }
+        footer a { color: rgba(248,247,243,0.6); }
+    </style>
+</head>
+<body>
+
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <nav>
+        <a href="/intelligence/" class="nav-logo">FOIS <em>Intelligence</em></a>
+        <a href="/intelligence/" class="nav-back">← Intelligence Home</a>
+    </nav>
+
+    <section class="lib-hero">
+        <p class="section-eyebrow">Research Library</p>
+        <h1 class="lib-title">Every Report, <em>Searchable</em></h1>
+        <p class="lib-sub">The complete FOIS Intelligence archive — filterable by country, industry, topic, year, author and content type.</p>
+        <div class="lib-search">
+            <input type="text" id="searchInput" placeholder="Search by title, topic or country...">
+            <button onclick="applyFilters()">Search</button>
+        </div>
+    </section>
+
+    <div class="lib-body">
+        <aside class="filters">
+            <div class="filter-group">
+                <h4>Content Type</h4>
+                <div id="filterType"></div>
+            </div>
+            <div class="filter-group">
+                <h4>Topic</h4>
+                <div id="filterTopic"></div>
+            </div>
+            <div class="filter-group">
+                <h4>Country</h4>
+                <div id="filterCountry"></div>
+            </div>
+            <div class="filter-group">
+                <h4>Year</h4>
+                <div id="filterYear"></div>
+            </div>
+            <button class="filter-reset" onclick="resetFilters()">Reset all filters</button>
+        </aside>
+
+        <main>
+            <div class="results-header">
+                <div class="results-count" id="resultsCount"></div>
+                <div class="results-sort">
+                    Sort by
+                    <select id="sortSelect" onchange="applyFilters()">
+                        <option value="newest">Newest</option>
+                        <option value="oldest">Oldest</option>
+                        <option value="az">A–Z</option>
+                    </select>
+                </div>
+            </div>
+            <div class="results-list" id="resultsList"></div>
+        </main>
+    </div>
+
+    <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/intelligence/">Back to FOIS Intelligence</a></footer>
+
+    <script>
+        const REPORTS = [
+            { title: "The State of Interior Spaces 2027", type: "Annual Report", topic: "Market Intelligence", country: "Global", year: 2027, href: "/intelligence/state-of-interior-spaces-2027/" },
+            { title: "The Future Workplace Report", type: "Industry Outlook", topic: "Workplace", country: "Global", year: 2026, href: "/intelligence/future-workplace-report/" },
+            { title: "Africa Interior Design Outlook", type: "Country Intelligence", topic: "Country Intelligence", country: "Nigeria", year: 2026, href: "/intelligence/africa-interior-design-outlook/" },
+            { title: "AI Adoption in Interior Design", type: "Trend Report", topic: "AI & Technology", country: "Global", year: 2026, href: "/intelligence/ai-adoption-interior-design/" },
+            { title: "Material Innovation Index", type: "Index", topic: "Materials", country: "Global", year: 2026, href: "/intelligence/material-innovation-index/" },
+            { title: "Future Homes Report", type: "Industry Outlook", topic: "Residential", country: "Global", year: 2026, href: "/intelligence/future-homes-report/" },
+            { title: "Hospitality Trends", type: "Trend Report", topic: "Hospitality", country: "Global", year: 2026, href: "/intelligence/hospitality-trends/" },
+            { title: "United Kingdom Interior Design Intelligence", type: "Country Intelligence", topic: "Country Intelligence", country: "United Kingdom", year: 2026, href: "/intelligence/country/united-kingdom/" },
+            { title: "UAE & the Gulf Design Economy", type: "Country Intelligence", topic: "Country Intelligence", country: "United Arab Emirates", year: 2026, href: "/intelligence/country/uae/" },
+            { title: "Singapore: Southeast Asia's Design Hub", type: "Country Intelligence", topic: "Country Intelligence", country: "Singapore", year: 2025, href: "/intelligence/country/singapore/" },
+            { title: "In Conversation: Designing for Ageing Populations", type: "Interview", topic: "Residential", country: "Global", year: 2026, href: "/intelligence/interview-ageing-populations/" },
+            { title: "Opinion: Why Circularity Can't Stay Optional", type: "Opinion", topic: "Sustainability", country: "Global", year: 2026, href: "/intelligence/opinion-circularity/" },
+            { title: "Material Passports: A Practitioner's Primer", type: "White Paper", topic: "Materials", country: "Global", year: 2025, href: "/intelligence/white-paper-material-passports/" },
+            { title: "Healthcare Environments After the Pandemic", type: "Industry Outlook", topic: "Healthcare", country: "Global", year: 2025, href: "/intelligence/healthcare-environments/" },
+            { title: "The Executive Summary: Q4 2026 Market Signals", type: "Executive Summary", topic: "Market Intelligence", country: "Global", year: 2026, href: "/intelligence/executive-summary-q4-2026/" }
+        ];
+
+        const state = { search: "", type: new Set(), topic: new Set(), country: new Set(), year: new Set(), sort: "newest" };
+
+        function unique(key) { return [...new Set(REPORTS.map(r => r[key]))].sort(); }
+
+        function renderFilterGroup(containerId, key) {
+            const container = document.getElementById(containerId);
+            const values = key === 'year' ? unique('year').sort((a,b) => b - a) : unique(key);
+            container.innerHTML = values.map(v => {
+                const count = REPORTS.filter(r => r[key] === v).length;
+                return `<label class="filter-option"><input type="checkbox" value="${v}" data-key="${key}" onchange="toggleFilter('${key}', '${v}', this.checked)"> ${v} <span class="filter-count">${count}</span></label>`;
+            }).join('');
+        }
+
+        function toggleFilter(key, value, checked) {
+            const val = ['year'].includes(key) ? Number(value) : value;
+            if (checked) state[key].add(val); else state[key].delete(val);
+            applyFilters();
+        }
+
+        function resetFilters() {
+            state.search = ""; state.type.clear(); state.topic.clear(); state.country.clear(); state.year.clear();
+            document.getElementById('searchInput').value = "";
+            document.querySelectorAll('.filter-option input').forEach(el => el.checked = false);
+            applyFilters();
+        }
+
+        function applyFilters() {
+            state.search = document.getElementById('searchInput').value.trim().toLowerCase();
+            state.sort = document.getElementById('sortSelect').value;
+
+            let results = REPORTS.filter(r => {
+                const matchSearch = !state.search || r.title.toLowerCase().includes(state.search) || r.topic.toLowerCase().includes(state.search) || r.country.toLowerCase().includes(state.search);
+                const matchType = state.type.size === 0 || state.type.has(r.type);
+                const matchTopic = state.topic.size === 0 || state.topic.has(r.topic);
+                const matchCountry = state.country.size === 0 || state.country.has(r.country);
+                const matchYear = state.year.size === 0 || state.year.has(r.year);
+                return matchSearch && matchType && matchTopic && matchCountry && matchYear;
+            });
+
+            if (state.sort === 'newest') results.sort((a, b) => b.year - a.year);
+            if (state.sort === 'oldest') results.sort((a, b) => a.year - b.year);
+            if (state.sort === 'az') results.sort((a, b) => a.title.localeCompare(b.title));
+
+            document.getElementById('resultsCount').textContent = `${results.length} result${results.length === 1 ? '' : 's'}`;
+
+            const list = document.getElementById('resultsList');
+            if (results.length === 0) {
+                list.innerHTML = `<div class="no-results"><p>No reports match your filters yet.</p><button class="btn" onclick="resetFilters()">Reset filters</button></div>`;
+                return;
+            }
+            list.innerHTML = results.map(r => `
+                <a href="${r.href}" class="result-row">
+                    <div class="result-type">${r.type}</div>
+                    <div>
+                        <div class="result-title">${r.title}</div>
+                        <div class="result-meta">${r.country} · ${r.year}</div>
+                    </div>
+                    <div class="result-tags"><span class="result-tag">${r.topic}</span></div>
+                </a>
+            `).join('');
+        }
+
+        renderFilterGroup('filterType', 'type');
+        renderFilterGroup('filterTopic', 'topic');
+        renderFilterGroup('filterCountry', 'country');
+        renderFilterGroup('filterYear', 'year');
+
+        // Support incoming links like /intelligence/library/?q=workplace or ?country=Nigeria
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('q')) document.getElementById('searchInput').value = params.get('q');
+        if (params.get('country')) {
+            const val = params.get('country');
+            state.country.add(val);
+            const cb = document.querySelector(`#filterCountry input[value="${val}"]`);
+            if (cb) cb.checked = true;
+        }
+        applyFilters();
+
+        document.getElementById('searchInput').addEventListener('input', applyFilters);
+
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.transform = `translate(${e.clientX - 9}px, ${e.clientY - 9}px)`;
+            cursorDot.style.transform = `translate(${e.clientX - 2}px, ${e.clientY - 2}px)`;
+        });
+        document.body.addEventListener('mouseover', (e) => {
+            if (e.target.closest('a, button, input, select, label')) cursor.classList.add('hover'); else cursor.classList.remove('hover');
+        });
+    </script>
+</body>
+</html>

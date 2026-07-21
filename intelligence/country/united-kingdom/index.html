@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>United Kingdom — Country Intelligence | FOIS Intelligence</title>
+    <meta name="description" content="FOIS Intelligence country profile: the United Kingdom's interior design and built environment market.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --midnight: #0B1F33; --ivory: #F8F7F3; --gold: #C8A96A; --gold-light: #d4b87a;
+            --graphite: #2E3135; --stone: #D8D7D2; --stone-light: #E8E7E2; --slate: #5F6770;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--ivory); color: var(--graphite); cursor: none; -webkit-font-smoothing: antialiased; }
+        .cursor { width: 18px; height: 18px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; mix-blend-mode: difference; }
+        .cursor.hover { transform: scale(2.2); }
+        .cursor-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+
+        nav { position: fixed; top: 0; width: 100%; padding: 1.3rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11,31,51,0.96); backdrop-filter: blur(20px); }
+        .nav-logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); }
+        .nav-logo em { color: var(--gold); font-style: italic; }
+        .nav-back { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,243,0.7); text-decoration: none; border: 1px solid rgba(248,247,243,0.25); padding: 0.65rem 1.4rem; }
+        .nav-back:hover { border-color: var(--gold); color: var(--gold); }
+        @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } }
+
+        .country-hero { background: var(--midnight); color: var(--ivory); padding: 10rem 5rem 5rem; }
+        @media (max-width: 700px) { .country-hero { padding: 8.5rem 1.8rem 3.5rem; } }
+        .breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.6rem; }
+        .breadcrumb a { color: rgba(248,247,243,0.5); text-decoration: none; }
+        .country-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; margin-bottom: 1.2rem; }
+        .country-title em { color: var(--gold); font-style: italic; }
+        .country-sub { font-family: 'Inter', sans-serif; font-weight: 300; color: rgba(248,247,243,0.6); max-width: 640px; line-height: 1.8; margin-bottom: 2.5rem; }
+        .country-stat-row { display: flex; gap: 3rem; flex-wrap: wrap; }
+        .country-stat { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(248,247,243,0.45); }
+        .country-stat strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-style: italic; color: var(--gold); text-transform: none; letter-spacing: 0; margin-bottom: 0.2rem; }
+
+        section { padding: 6rem 5rem; max-width: 1300px; margin: 0 auto; }
+        @media (max-width: 700px) { section { padding: 4rem 1.8rem; } }
+        .section-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 300; margin-bottom: 1.4rem; max-width: 700px; }
+        .section-title em { color: var(--gold); font-style: italic; }
+        .reading-col { max-width: 720px; }
+        .reading-col p { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--graphite); margin-bottom: 1.3rem; }
+        .reveal { opacity: 0; transform: translateY(40px); }
+
+        /* Sector Breakdown */
+        .sector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--stone); border: 1px solid var(--stone); margin-top: 1rem; }
+        @media (max-width: 700px) { .sector-grid { grid-template-columns: 1fr; } }
+        .sector-block { background: var(--ivory); padding: 2.3rem 2rem; }
+        .sector-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; margin-bottom: 0.6rem; }
+        .sector-desc { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--slate); line-height: 1.7; }
+
+        /* City Map / Cities list */
+        .city-list { display: flex; flex-direction: column; border-top: 1px solid var(--stone); margin-top: 1rem; }
+        .city-row { display: flex; justify-content: space-between; align-items: center; padding: 1.6rem 0; border-bottom: 1px solid var(--stone); }
+        .city-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; }
+        .city-note { font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--slate); }
+
+        /* Chart */
+        .country-chart { background: var(--stone-light); padding: 3rem; margin-top: 1rem; }
+        .chart-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; margin-bottom: 2rem; }
+        .chart-bars { display: flex; align-items: flex-end; gap: 1.2rem; height: 190px; }
+        .chart-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+        .chart-bar { width: 100%; background: linear-gradient(to top, var(--gold), var(--gold-light)); }
+        .chart-bar-label { margin-top: 0.7rem; font-family: 'Inter', sans-serif; font-size: 0.66rem; color: var(--slate); text-align: center; }
+        .illustrative-note { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--slate); font-style: italic; margin-top: 1.2rem; }
+
+        /* Related */
+        .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1rem; }
+        @media (max-width: 700px) { .related-grid { grid-template-columns: 1fr; } }
+        .related-card { text-decoration: none; color: inherit; border: 1px solid var(--stone); padding: 2rem; display: block; transition: border-color 0.3s ease; }
+        .related-card:hover { border-color: var(--gold); }
+        .related-tag { font-family: 'Inter', sans-serif; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; }
+        .related-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; }
+
+        /* Country picker */
+        .country-picker { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem; }
+        .country-pill { font-family: 'Inter', sans-serif; font-size: 0.8rem; border: 1px solid var(--stone); padding: 0.75rem 1.5rem; text-decoration: none; color: var(--graphite); }
+        .country-pill.active { background: var(--midnight); color: var(--ivory); border-color: var(--midnight); }
+        .country-pill:hover:not(.active) { border-color: var(--gold); color: var(--gold); }
+
+        .btn-primary { padding: 1rem 2.4rem; background: var(--gold); color: var(--midnight); border: none; font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; }
+        .btn-secondary { padding: 1rem 2.4rem; background: transparent; color: var(--ivory); border: 1px solid rgba(248,247,243,0.25); font-family: 'Inter', sans-serif; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; }
+
+        footer { background: #060e18; color: rgba(248,247,243,0.4); padding: 3rem 5rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; }
+        footer a { color: rgba(248,247,243,0.6); }
+    </style>
+</head>
+<body>
+
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <nav>
+        <a href="/intelligence/" class="nav-logo">FOIS <em>Intelligence</em></a>
+        <a href="/intelligence/library/" class="nav-back">← All Countries</a>
+    </nav>
+
+    <section class="country-hero" style="max-width:none;">
+        <div style="max-width:1300px; margin:0 auto;">
+            <p class="breadcrumb"><a href="/intelligence/">FOIS Intelligence</a> / <a href="/intelligence/library/">Countries</a> / United Kingdom</p>
+            <h1 class="country-title">United Kingdom: <em>Country Intelligence</em></h1>
+            <p class="country-sub">A continuously updated profile of the UK's interior design, architecture and property market — one of eleven country profiles maintained by FOIS Intelligence.</p>
+            <div class="country-stat-row">
+                <div class="country-stat"><strong>3</strong>Cities Profiled</div>
+                <div class="country-stat"><strong>6</strong>Sectors Tracked</div>
+                <div class="country-stat"><strong>2026</strong>Last Updated</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Overview -->
+    <section>
+        <p class="section-eyebrow">Overview</p>
+        <h2 class="section-title">A Mature Market Under <em>Renewed Pressure</em></h2>
+        <div class="reading-col reveal">
+            <p>The United Kingdom remains one of the most established interior design markets FOIS Intelligence tracks, anchored by London's position as a global hub for high-end residential, hospitality and workplace design. Growth is increasingly coming from outside the capital, however, as Manchester, Edinburgh and Bristol build design-led commercial and mixed-use pipelines of their own.</p>
+            <p>Two forces are shaping specification decisions in the UK more than anywhere else FOIS Intelligence covers: tightening embodied-carbon regulation in commercial retrofit, and a hybrid-work-driven reallocation of office floor plates toward hospitality-grade amenity space.</p>
+        </div>
+    </section>
+
+    <!-- Sector Breakdown -->
+    <section style="background: var(--stone-light); max-width: none;">
+        <div style="max-width:1300px; margin:0 auto;">
+            <p class="section-eyebrow">Sector Breakdown</p>
+            <h2 class="section-title">Where UK Activity Is <em>Concentrated</em></h2>
+            <div class="sector-grid reveal">
+                <div class="sector-block"><div class="sector-name">Workplace</div><p class="sector-desc">Retrofit-led, amenity-focused. The largest source of new UK commissions tracked by FOIS Intelligence.</p></div>
+                <div class="sector-block"><div class="sector-name">Residential</div><p class="sector-desc">High-end London demand remains resilient; regional multigenerational housing is the fastest-growing segment.</p></div>
+                <div class="sector-block"><div class="sector-name">Hospitality</div><p class="sector-desc">Boutique and lifestyle hotel openings concentrated in Manchester, Edinburgh and coastal regeneration towns.</p></div>
+                <div class="sector-block"><div class="sector-name">Heritage & Adaptive Reuse</div><p class="sector-desc">A UK specialism — listed-building retrofit expertise increasingly exported to other FOIS-tracked markets.</p></div>
+                <div class="sector-block"><div class="sector-name">Education</div><p class="sector-desc">University estates investing in flexible, technology-enabled learning environments.</p></div>
+                <div class="sector-block"><div class="sector-name">Healthcare</div><p class="sector-desc">NHS estate modernisation driving demand for evidence-based, low-maintenance interior specification.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cities -->
+    <section>
+        <p class="section-eyebrow">City Intelligence</p>
+        <h2 class="section-title">Cities Profiled Within the <em>UK</em></h2>
+        <div class="city-list reveal">
+            <div class="city-row"><div class="city-name">London</div><div class="city-note">Global hub · High-end residential & hospitality</div></div>
+            <div class="city-row"><div class="city-name">Manchester</div><div class="city-note">Fastest-growing · Workplace & hospitality</div></div>
+            <div class="city-row"><div class="city-name">Edinburgh</div><div class="city-note">Heritage-led · Hospitality & boutique residential</div></div>
+        </div>
+    </section>
+
+    <!-- Data Highlight -->
+    <section style="background: var(--stone-light); max-width: none;">
+        <div style="max-width:1300px; margin:0 auto;">
+            <p class="section-eyebrow">Data Highlight</p>
+            <h2 class="section-title">UK Commission Activity by <em>Sector</em></h2>
+            <div class="country-chart reveal">
+                <p class="chart-title">Share of new UK commissions tracked, by sector</p>
+                <div class="chart-bars">
+                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:74%;"></div><div class="chart-bar-label">Workplace</div></div>
+                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:61%;"></div><div class="chart-bar-label">Residential</div></div>
+                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:49%;"></div><div class="chart-bar-label">Hospitality</div></div>
+                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:38%;"></div><div class="chart-bar-label">Heritage Reuse</div></div>
+                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:29%;"></div><div class="chart-bar-label">Education</div></div>
+                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:24%;"></div><div class="chart-bar-label">Healthcare</div></div>
+                </div>
+            </div>
+            <p class="illustrative-note">Illustrative sample data — will be replaced with verified figures as FOIS Intelligence's UK research programme publishes.</p>
+        </div>
+    </section>
+
+    <!-- Related Research -->
+    <section>
+        <p class="section-eyebrow">Related Research</p>
+        <h2 class="section-title">More on the <em>UK Market</em></h2>
+        <div class="related-grid reveal">
+            <a href="/intelligence/library/?q=Future+Workplace+Report" class="related-card"><div class="related-tag">Workplace</div><div class="related-title">The Future Workplace Report</div></a>
+            <a href="/intelligence/library/?q=Hospitality+Trends" class="related-card"><div class="related-tag">Hospitality</div><div class="related-title">Hospitality Trends</div></a>
+            <a href="/intelligence/library/?q=Material+Passports" class="related-card"><div class="related-tag">Sustainability</div><div class="related-title">Material Passports: A Practitioner's Primer</div></a>
+        </div>
+    </section>
+
+    <!-- Country Picker -->
+    <section style="background: var(--midnight); color: var(--ivory); max-width: none; text-align:center;">
+        <div style="max-width:1300px; margin:0 auto;">
+            <p class="section-eyebrow">Explore Other Markets</p>
+            <h2 class="section-title" style="color:var(--ivory); margin-left:auto; margin-right:auto;">Browse <em>Country Intelligence</em></h2>
+            <div class="country-picker reveal" style="justify-content:center;">
+                <span class="country-pill active">United Kingdom</span>
+                <a href="/intelligence/library/?country=United+Arab+Emirates" class="country-pill">United Arab Emirates</a>
+                <a href="/intelligence/library/?country=Nigeria" class="country-pill">Nigeria</a>
+                <a href="/intelligence/library/?country=Singapore" class="country-pill">Singapore</a>
+                <a href="/intelligence/library/?country=United+States" class="country-pill">United States</a>
+            </div>
+        </div>
+    </section>
+
+    <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/intelligence/">Back to FOIS Intelligence</a></footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX - 9, y: e.clientY - 9, duration: 0.15 });
+            gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.05 });
+        });
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+        document.querySelectorAll('.reveal').forEach((el, i) => {
+            gsap.to(el, {
+                scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" },
+                opacity: 1, y: 0, duration: 1, delay: (i % 4) * 0.05, ease: "power3.out"
+            });
+        });
+    </script>
+</body>
+</html>

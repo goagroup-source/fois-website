@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>In Conversation: Designing for Ageing Populations — FOIS Intelligence</title>
+    <meta name="description" content="An FOIS Intelligence interview on designing residential interiors for ageing populations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+        :root {
+            --midnight: #0B1F33; --ivory: #F8F7F3; --gold: #C8A96A; --gold-light: #d4b87a;
+            --graphite: #2E3135; --stone: #D8D7D2; --stone-light: #E8E7E2; --slate: #5F6770;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: 'Inter', sans-serif; background: var(--ivory); color: var(--graphite); cursor: none; -webkit-font-smoothing: antialiased; }
+        .cursor { width: 18px; height: 18px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; mix-blend-mode: difference; }
+        .cursor.hover { transform: scale(2.2); }
+        .cursor-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+
+        nav { position: fixed; top: 0; width: 100%; padding: 1.3rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11,31,51,0.96); backdrop-filter: blur(20px); }
+        .nav-logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); }
+        .nav-logo em { color: var(--gold); font-style: italic; }
+        .nav-back { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,243,0.7); text-decoration: none; border: 1px solid rgba(248,247,243,0.25); padding: 0.65rem 1.4rem; }
+        .nav-back:hover { border-color: var(--gold); color: var(--gold); }
+        @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } }
+
+        .article-hero { padding: 10rem 2rem 3rem; text-align: center; }
+        .article-tag { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.6rem; }
+        .article-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4.5vw, 3.4rem); font-weight: 300; line-height: 1.2; max-width: 820px; margin: 0 auto 1.6rem; }
+        .article-title em { font-style: italic; color: var(--gold); }
+        .article-meta { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--slate); }
+        .article-hero-img { width: 100%; max-width: 1100px; margin: 3rem auto 0; }
+        .article-hero-img img { width: 100%; height: 480px; object-fit: cover; }
+        @media (max-width: 700px) { .article-hero-img img { height: 260px; } }
+
+        .article-body { max-width: 700px; margin: 4rem auto; padding: 0 2rem; }
+        .article-body p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; line-height: 1.85; color: var(--graphite); margin-bottom: 1.6rem; }
+        .article-body p.intro { font-size: 1.35rem; font-style: italic; color: var(--slate); }
+        .qa-block { margin-bottom: 2.2rem; }
+        .qa-q { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.6rem; }
+        .qa-question { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; margin-bottom: 0.8rem; }
+        .qa-answer { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 300; line-height: 1.85; color: var(--graphite); }
+        .pullquote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.8rem; font-weight: 300; color: var(--midnight); border-left: 3px solid var(--gold); padding-left: 2rem; margin: 3rem 0; line-height: 1.5; }
+
+        .interviewee-box { max-width: 700px; margin: 0 auto 4rem; padding: 2rem 2.5rem; background: var(--stone-light); display: flex; gap: 1.5rem; align-items: center; }
+        .interviewee-role { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.3rem; }
+        .interviewee-name { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; }
+
+        .related-strip { background: var(--midnight); color: var(--ivory); padding: 5rem 5rem; text-align: center; }
+        @media (max-width: 700px) { .related-strip { padding: 4rem 1.8rem; } }
+        .section-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
+        .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 300; color: var(--ivory); margin: 0 auto 2rem; max-width: 700px; }
+        .section-title em { color: var(--gold); font-style: italic; }
+        .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.2rem; max-width: 1100px; margin: 0 auto; }
+        @media (max-width: 700px) { .related-grid { grid-template-columns: 1fr; } }
+        .related-card { text-decoration: none; color: var(--ivory); border: 1px solid rgba(248,247,243,0.2); padding: 1.8rem; text-align: left; display: block; }
+        .related-card:hover { border-color: var(--gold); }
+        .related-tag { font-family: 'Inter', sans-serif; font-size: 0.64rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.7rem; }
+        .related-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; }
+
+        footer { background: #060e18; color: rgba(248,247,243,0.4); padding: 3rem 5rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; }
+        footer a { color: rgba(248,247,243,0.6); }
+        .reveal { opacity: 0; transform: translateY(30px); }
+    </style>
+</head>
+<body>
+
+    <div class="cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <nav>
+        <a href="/intelligence/" class="nav-logo">FOIS <em>Intelligence</em></a>
+        <a href="/intelligence/library/" class="nav-back">← Research Library</a>
+    </nav>
+
+    <section class="article-hero">
+        <p class="article-tag">Interview · Residential</p>
+        <h1 class="article-title">In Conversation: Designing for <em>Ageing Populations</em></h1>
+        <p class="article-meta">FOIS Intelligence · 2026</p>
+        <div class="article-hero-img reveal">
+            <img src="https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&h=700&fit=crop" alt="Residential interior designed for ageing in place">
+        </div>
+    </section>
+
+    <div class="article-body">
+        <p class="intro reveal">As multigenerational households become more common across the markets FOIS Intelligence tracks, we spoke with a residential design practitioner about what "ageing in place" actually demands of an interior.</p>
+
+        <div class="qa-block reveal">
+            <p class="qa-q">FOIS Intelligence</p>
+            <p class="qa-question">What's the biggest misconception clients have about designing for older residents?</p>
+            <p class="qa-answer">That it means removing personality from a home. The best examples we've seen do the opposite — they solve for grip, lighting and step-free movement so quietly that a visitor wouldn't notice, and spend the visible budget on the things that make a home feel like a home.</p>
+        </div>
+
+        <div class="pullquote reveal">"Accessible design that looks institutional has already failed at half its job."</div>
+
+        <div class="qa-block reveal">
+            <p class="qa-q">FOIS Intelligence</p>
+            <p class="qa-question">Where are you seeing the most interesting material innovation for this segment?</p>
+            <p class="qa-answer">Flooring, honestly. Slip-resistant finishes that don't read as clinical have improved enormously in the last two years — that's a small technical shift with an outsized effect on how a space feels to live in every day.</p>
+        </div>
+
+        <div class="qa-block reveal">
+            <p class="qa-q">FOIS Intelligence</p>
+            <p class="qa-question">What should the industry be doing differently?</p>
+            <p class="qa-answer">Designing for this earlier. Right now most of this thinking happens in a renovation, reactively, after a health event. It should be a standard design consideration from the first residential brief, the same way daylighting or storage already is.</p>
+        </div>
+    </div>
+
+    <div class="interviewee-box reveal">
+        <div>
+            <div class="interviewee-role">Interviewed For This Feature</div>
+            <div class="interviewee-name">A FOIS Community member practising residential design in the United Kingdom</div>
+        </div>
+    </div>
+
+    <section class="related-strip">
+        <p class="section-eyebrow">Continue Reading</p>
+        <h2 class="section-title">More on <em>Residential Design</em></h2>
+        <div class="related-grid reveal">
+            <a href="/intelligence/library/?q=Future+Homes+Report" class="related-card"><div class="related-tag">Residential</div><div class="related-title">Future Homes Report</div></a>
+            <a href="/intelligence/library/?q=Circularity" class="related-card"><div class="related-tag">Opinion</div><div class="related-title">Why Circularity Can't Stay Optional</div></a>
+            <a href="/intelligence/library/?q=Material+Passports" class="related-card"><div class="related-tag">White Paper</div><div class="related-title">Material Passports: A Practitioner's Primer</div></a>
+        </div>
+    </section>
+
+    <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/intelligence/">Back to FOIS Intelligence</a></footer>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+        const cursor = document.querySelector('.cursor');
+        const cursorDot = document.querySelector('.cursor-dot');
+        document.addEventListener('mousemove', (e) => {
+            gsap.to(cursor, { x: e.clientX - 9, y: e.clientY - 9, duration: 0.15 });
+            gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.05 });
+        });
+        document.querySelectorAll('a, button').forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+        });
+        document.querySelectorAll('.reveal').forEach((el, i) => {
+            gsap.to(el, {
+                scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" },
+                opacity: 1, y: 0, duration: 1, delay: (i % 4) * 0.05, ease: "power3.out"
+            });
+        });
+    </script>
+</body>
+</html>
