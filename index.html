@@ -840,6 +840,10 @@
             border-color: var(--midnight);
             color: var(--midnight);
         }
+        @media (max-width: 700px) {
+            .schedule-tabs { flex-wrap: wrap; gap: 0.6rem; }
+            .schedule-tab { padding: 0.7rem 1.3rem; font-size: 0.68rem; }
+        }
         .schedule-list {
             max-width: 1000px;
             margin: 0 auto;
@@ -1782,8 +1786,8 @@
             <li><a href="#platform-overview">Platform</a></li>
             <li><a href="/intelligence/">Research</a></li>
             <li><a href="/journal/">Journal</a></li>
-            <li><a href="#community">Community</a></li>
-            <li><a href="#conference">Conference</a></li>
+            <li><a href="/community/">Community</a></li>
+            <li><a href="/conference/">Conference</a></li>
             <li><a href="/awards/">Awards</a></li>
             <li><a href="#partners">Partners</a></li>
             <li><a href="#about">About</a></li>
@@ -1803,8 +1807,8 @@
             <li><a href="#platform-overview">Platform</a></li>
             <li><a href="/intelligence/">Research</a></li>
             <li><a href="/journal/">Journal</a></li>
-            <li><a href="#community">Community</a></li>
-            <li><a href="#conference">Conference</a></li>
+            <li><a href="/community/">Community</a></li>
+            <li><a href="/conference/">Conference</a></li>
             <li><a href="/awards/">Awards</a></li>
             <li><a href="#partners">Partners</a></li>
             <li><a href="#about">About</a></li>
@@ -1993,7 +1997,7 @@
                 <p class="overview-card-desc">Research reports, trend forecasts and market insight for the industry.</p>
                 <span class="overview-card-link">Learn More</span>
             </a>
-            <a href="#community" class="overview-card reveal" style="text-decoration:none; color:inherit; display:block;">
+            <a href="/community/" class="overview-card reveal" style="text-decoration:none; color:inherit; display:block;">
                 <div class="overview-card-num">03</div>
                 <h3 class="overview-card-title">FOIS Community</h3>
                 <p class="overview-card-desc">Regional chapters and a global membership connecting every discipline.</p>
@@ -2454,8 +2458,8 @@
             <div class="footer-col">
                 <h4>Participate</h4>
                 <ul>
-                    <li><a href="#conference">Attend the Conference</a></li>
-                    <li><a href="#community">Join the Community</a></li>
+                    <li><a href="/conference/">Attend the Conference</a></li>
+                    <li><a href="/community/">Join the Community</a></li>
                     <li><a href="/awards/">FOIS Awards</a></li>
                     <li><a href="/speak/">Speak at FOIS</a></li>
                     <li><a href="/sponsor/">Sponsor</a></li>
