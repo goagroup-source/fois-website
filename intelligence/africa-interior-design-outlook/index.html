@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Africa Interior Design Outlook — FOIS Intelligence</title>
+  <meta name="description" content="FOIS Intelligence's editorial synthesis of published research on Africa's interior design economy, anchored in Nigeria, covering market size, urbanization, housing deficit and the hospitality pipeline.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+  :root { --midnight: #0B1F33; --ivory: #F8F7F3; --gold: #C8A96A; --gold-light: #d4b87a; --graphite: #2E3135; --stone: #D8D7D2; --stone-light: #E8E7E2; --slate: #5F6770; }
+  * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--ivory); color: var(--graphite); cursor: none; -webkit-font-smoothing: antialiased; }
+  .cursor { width: 18px; height: 18px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; mix-blend-mode: difference; }
+  .cursor.hover { transform: scale(2.2); } .cursor-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+  nav { position: fixed; top: 0; width: 100%; padding: 1.3rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11,31,51,0.96); backdrop-filter: blur(20px); }
+  .nav-logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); } .nav-logo em { color: var(--gold); font-style: italic; }
+  .nav-back { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,243,0.7); text-decoration: none; border: 1px solid rgba(248,247,243,0.25); padding: 0.65rem 1.4rem; }
+  .nav-back:hover { border-color: var(--gold); color: var(--gold); } @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } }
+  .report-hero { background: var(--midnight); color: var(--ivory); padding: 11rem 5rem 6rem; } @media (max-width: 700px) { .report-hero { padding: 9rem 1.8rem 4rem; } }
+  .report-breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; } .report-breadcrumb a { color: rgba(248,247,243,0.5); text-decoration: none; }
+  .report-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; max-width: 900px; margin-bottom: 1.5rem; } .report-title em { color: var(--gold); font-style: italic; }
+  .report-subtitle { font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 300; color: rgba(248,247,243,0.65); max-width: 640px; line-height: 1.75; margin-bottom: 2.5rem; }
+  .report-meta-row { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 3rem; } .report-meta { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(248,247,243,0.45); }
+  .report-meta strong { display: block; color: var(--ivory); font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; text-transform: none; letter-spacing: 0; margin-bottom: 0.2rem; }
+  .report-cta-group { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .btn-primary { padding: 1.05rem 2.6rem; background: var(--gold); color: var(--midnight); border: none; font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; } .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); }
+  .btn-secondary { padding: 1.05rem 2.6rem; background: transparent; color: var(--ivory); border: 1px solid rgba(248,247,243,0.25); font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; } .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  section { padding: 6rem 5rem; max-width: 1300px; margin: 0 auto; } @media (max-width: 700px) { section { padding: 4rem 1.8rem; } }
+  .section-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; margin-bottom: 1.6rem; max-width: 700px; } .section-title em { color: var(--gold); font-style: italic; }
+  .reading-col { max-width: 720px; } .reading-col p { font-family: 'Inter', sans-serif; font-size: 1.02rem; font-weight: 300; line-height: 1.9; color: var(--graphite); margin-bottom: 1.4rem; }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: var(--stone); border: 1px solid var(--stone); margin-top: 1rem; } @media (max-width: 700px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat-block { background: var(--ivory); padding: 2.5rem 1.8rem; min-width: 0; } .stat-block-value { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-style: italic; color: var(--gold); line-height: 1; margin-bottom: 0.6rem; } .stat-block-label { font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--slate); line-height: 1.5; }
+  .illustrative-note { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--slate); font-style: italic; margin-top: 1.2rem; }
+  .report-chart { background: var(--stone-light); padding: 3rem; margin-top: 1rem; } .chart-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; margin-bottom: 2rem; }
+  .chart-bars { display: flex; align-items: flex-end; gap: 1.4rem; height: 200px; } .chart-bar-wrap { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .chart-bar { width: 100%; background: linear-gradient(to top, var(--gold), var(--gold-light)); position: relative; } .chart-bar-label { margin-top: 0.8rem; font-family: 'Inter', sans-serif; font-size: 0.68rem; color: var(--slate); text-align: center; }
+  .authors-row { display: flex; gap: 3rem; flex-wrap: wrap; margin-top: 1rem; } .author-block { max-width: 320px; } .author-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.4rem; } .author-role { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--slate); line-height: 1.6; }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1rem; } @media (max-width: 700px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card { text-decoration: none; color: inherit; border: 1px solid var(--stone); padding: 2rem; display: block; transition: border-color 0.3s ease; } .related-card:hover { border-color: var(--gold); }
+  .related-tag { font-family: 'Inter', sans-serif; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; } .related-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; }
+  .sources-list { margin-top: 1rem; border-top: 1px solid var(--stone); } .sources-list li { list-style: none; padding: 1.1rem 0; border-bottom: 1px solid var(--stone); font-family: 'Inter', sans-serif; font-size: 0.9rem; } .sources-list a { color: var(--graphite); } .sources-list a:hover { color: var(--gold); }
+  footer { background: #060e18; color: var(--ivory); padding: 3.5rem 5rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(248,247,243,0.4); } footer a { color: rgba(248,247,243,0.6); }
+  .reveal { opacity: 0; transform: translateY(40px); }
+  </style></head>
+  <body>
+  <div class="cursor"></div><div class="cursor-dot"></div>
+  <nav><a href="/intelligence/" class="nav-logo">FOIS <em>Intelligence</em></a><a href="/intelligence/" class="nav-back">← All Research</a></nav>
+  
+  <section class="report-hero" style="max-width: none; margin: 0;"><div style="max-width: 1300px; margin: 0 auto;">
+  <p class="report-breadcrumb"><a href="/intelligence/">FOIS Intelligence</a> / Country Intelligence</p>
+  <h1 class="report-title">Africa Interior Design <em>Outlook</em></h1>
+  <p class="report-subtitle">Nigeria as the anchor market, and the wider case for Sub-Saharan Africa's interior economy — read against urbanization, housing deficit and a hospitality pipeline that is only beginning to build out.</p>
+  <div class="report-meta-row">
+  <div class="report-meta"><strong>$24.3B</strong>Africa interior design market, 2025</div>
+  <div class="report-meta"><strong>6.7%</strong>Projected CAGR to 2030</div>
+  <div class="report-meta"><strong>$40B</strong>Nigeria real estate market by 2030</div>
+  <div class="report-meta"><strong>28M</strong>Nigeria's projected housing unit deficit</div>
+  </div>
+  <div class="report-cta-group"><button class="btn-primary">Download Full PDF</button><button class="btn-secondary">Read Executive Summary</button></div>
+  </div></section>
+  
+  <section>
+  <p class="section-eyebrow reveal">Executive Summary</p>
+  <h2 class="section-title reveal">An interior economy built on <em>scarcity and scale</em></h2>
+  <div class="reading-col reveal">
+  <p>Africa's interior design sector is a study in contrast: chronic undersupply of formal housing sits alongside some of the fastest urban growth rates on earth, and a small, increasingly professionalised design community serves a market that third-party researchers now size in the tens of billions of dollars. Nigeria — Africa's most populous country and its largest economy by several measures — anchors this outlook, with Lagos functioning as the continent's most-watched design city outside Johannesburg and Nairobi.</p>
+  <p>Third-party market research puts the African interior design market at roughly $24.3 billion in 2025, expanding toward $35 billion by 2030 at a compound annual growth rate near 6.7%, split primarily across South Africa, Nigeria, Kenya and the "rest of Africa" category. Nigeria's own real estate market — the base on which fit-out, renovation and residential design demand sits — is estimated at $29–32 billion in 2024–2025 and is projected to approach $40 billion by 2030, a trajectory driven by urban migration into Lagos, Abuja and Port Harcourt, a growing services and technology economy, and government-backed urban development policy.</p>
+  <p>The industry's own trade body, the Interior Designers Association of Nigeria (IDAN), has cited a conservative estimate of over ₦30 billion in annual industry contribution — a figure IDAN's own leadership has publicly argued undercounts the sector by an order of magnitude, pending a fuller GDP-contribution study. What is not in dispute is direction: a housing deficit now projected by Lagos State officials to reach 28 million units nationally is, paradoxically, one of the strongest long-run demand signals for the design and build-out professions FOIS serves.</p>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow reveal">Key Statistics</p>
+  <h2 class="section-title reveal">The market in <em>numbers</em></h2>
+  <div class="stat-grid">
+  <div class="stat-block reveal"><div class="stat-block-value">$24.3B → $35B</div><div class="stat-block-label">Africa interior design market, 2025 to 2030 forecast, at a 6.7% CAGR</div></div>
+  <div class="stat-block reveal"><div class="stat-block-value">$29.2B → $40B</div><div class="stat-block-label">Nigeria real estate market, 2024 value versus 2030 forecast</div></div>
+  <div class="stat-block reveal"><div class="stat-block-value">28 Million</div><div class="stat-block-label">Nigeria's projected national housing unit deficit, per Lagos State government estimates</div></div>
+  <div class="stat-block reveal"><div class="stat-block-value">₦30bn+</div><div class="stat-block-label">Annual industry contribution estimated by the Interior Designers Association of Nigeria (IDAN)</div></div>
+  </div>
+  <p class="illustrative-note">Figures are drawn from third-party research — 6Wresearch, NextMSC and IDAN/press reporting — cited in full under Sources below, and reflect the state of publicly available research as of September 2026. FOIS Intelligence has not conducted an independent primary survey of this market.</p>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow reveal">Data Highlight</p>
+  <h2 class="section-title reveal">Where the growth is <em>concentrated</em></h2>
+  <div class="report-chart reveal">
+  <p class="chart-title">Estimated share of Africa's interior design market by country/region, 2025</p>
+  <div class="chart-bars">
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height:88%;"></div><div class="chart-bar-label">South Africa</div></div>
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height:70%;"></div><div class="chart-bar-label">Nigeria</div></div>
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height:42%;"></div><div class="chart-bar-label">Kenya</div></div>
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height:100%;"></div><div class="chart-bar-label">Rest of Africa</div></div>
+  </div>
+  </div>
+  <p class="illustrative-note">Relative proportions are illustrative, built from the country segmentation used in 6Wresearch's Africa Interior Design Market Outlook; absolute country-level dollar splits were not disclosed in the public summary and should not be inferred precisely from bar height.</p>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow reveal">Methodology</p>
+  <h2 class="section-title reveal">How this outlook was built</h2>
+  <div class="reading-col reveal">
+  <p>This report is FOIS Intelligence's editorial synthesis of publicly available third-party research — market-sizing studies, government and multilateral urbanization data, and trade and industry-association reporting — rather than an original FOIS field survey. Every statistic cited here is sourced and linked below. Where a figure is a projection or an estimate rather than an audited measurement, we have labelled it as such. FOIS has not surveyed interior design practitioners in this market for this report, and does not represent any number here as an FOIS-original data point.</p>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow reveal">Authored By</p>
+  <h2 class="section-title reveal">FOIS Intelligence Desk</h2>
+  <div class="authors-row">
+  <div class="author-block reveal"><div class="author-name">FOIS Research &amp; Editorial Team</div><div class="author-role">Compiled and fact-checked using publicly available market research, government statistics and trade press. Reviewed by the FOIS Intelligence desk ahead of publication.</div></div>
+  <div class="author-block reveal"><div class="author-name">Maven School of Interior Decoration and Design</div><div class="author-role">FOIS is a global initiative of Maven School of Interior Decoration and Design, Lagos, supporting the professionalisation of interior design across West and Sub-Saharan Africa.</div></div>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow reveal">Related Research</p>
+  <h2 class="section-title reveal">Continue reading</h2>
+  <div class="related-grid">
+  <a href="/intelligence/country/uae/" class="related-card reveal"><div class="related-tag">Country Intelligence</div><div class="related-title">UAE &amp; the Gulf Design Economy</div></a>
+  <a href="/intelligence/future-homes-report/" class="related-card reveal"><div class="related-tag">Report</div><div class="related-title">Future Homes Report</div></a>
+  <a href="/intelligence/hospitality-trends/" class="related-card reveal"><div class="related-tag">Report</div><div class="related-title">Hospitality Trends</div></a>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow reveal">Sources</p>
+  <h2 class="section-title reveal">Cited research</h2>
+  <ul class="sources-list">
+  <li><a href="https://www.6wresearch.com/industry-report/africa-interior-design-market-outlook" target="_blank" rel="noopener">6Wresearch — Africa Interior Design Market Outlook</a></li>
+  <li><a href="https://www.nextmsc.com/report/nigeria-real-estate-market" target="_blank" rel="noopener">NextMSC — Nigeria Real Estate Market Size &amp; Share Analysis, 2024–2030</a></li>
+  <li><a href="https://www.grandviewresearch.com/horizon/outlook/interior-design-market/mea" target="_blank" rel="noopener">Grand View Research — Middle East &amp; Africa Interior Design Market Outlook</a></li>
+  <li><a href="https://www.channelstv.com/2026/05/26/nigerias-housing-deficit-may-hit-28-million-units-lagos-govt/" target="_blank" rel="noopener">Channels Television — Nigeria's Housing Deficit May Hit 28 Million Units, Lagos Govt</a></li>
+  <li><a href="https://leadership.ng/interior-design-industry-generates-over-n30bn-annually/" target="_blank" rel="noopener">Leadership Nigeria — Interior Design Industry Generates Over ₦30bn Annually (IDAN)</a></li>
+  <li><a href="https://data.worldbank.org/indicator/SP.URB.GROW?locations=NG" target="_blank" rel="noopener">World Bank — Urban Population Growth, Nigeria</a></li>
+  <li><a href="https://www.culturedmag.com/lagos-nigeria-is-the-next-hot-design-scene/" target="_blank" rel="noopener">Cultured Magazine — Lagos, Nigeria Is the Next Hot Design Scene</a></li>
+  </ul>
+  </section>
+  
+  <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/intelligence/">Back to FOIS Intelligence</a></footer>
+  <script>
+  gsap.registerPlugin(ScrollTrigger);
+  const cursor = document.querySelector('.cursor'); const cursorDot = document.querySelector('.cursor-dot');
+  document.addEventListener('mousemove', (e) => { gsap.to(cursor, { x: e.clientX - 9, y: e.clientY - 9, duration: 0.15 }); gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.05 }); });
+  document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+  document.querySelectorAll('.reveal').forEach((el, i) => { gsap.to(el, { scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" }, opacity: 1, y: 0, duration: 1, delay: (i % 4) * 0.05, ease: "power3.out" }); });
+  </script></body></html>

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Singapore — Country Intelligence | FOIS Intelligence</title>
+  <meta name="description" content="FOIS Intelligence's editorial synthesis of published research on Singapore's design economy: construction demand, HDB renovation, green-building targets and Singapore's role as Southeast Asia's design hub.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+  :root { --midnight: #0B1F33; --ivory: #F8F7F3; --gold: #C8A96A; --gold-light: #d4b87a; --graphite: #2E3135; --stone: #D8D7D2; --stone-light: #E8E7E2; --slate: #5F6770; }
+  * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--ivory); color: var(--graphite); cursor: none; -webkit-font-smoothing: antialiased; }
+  .cursor { width: 18px; height: 18px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; mix-blend-mode: difference; }
+  .cursor.hover { transform: scale(2.2); } .cursor-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+  nav { position: fixed; top: 0; width: 100%; padding: 1.3rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11,31,51,0.96); backdrop-filter: blur(20px); }
+  .nav-logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); } .nav-logo em { color: var(--gold); font-style: italic; }
+  .nav-back { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,243,0.7); text-decoration: none; border: 1px solid rgba(248,247,243,0.25); padding: 0.65rem 1.4rem; }
+  .nav-back:hover { border-color: var(--gold); color: var(--gold); } @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } }
+  .country-hero { background: var(--midnight); color: var(--ivory); padding: 10rem 5rem 5rem; } @media (max-width: 700px) { .country-hero { padding: 8.5rem 1.8rem 3.5rem; } }
+  .breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.6rem; } .breadcrumb a { color: rgba(248,247,243,0.5); text-decoration: none; }
+  .country-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; margin-bottom: 1.2rem; } .country-title em { color: var(--gold); font-style: italic; }
+  .country-sub { font-family: 'Inter', sans-serif; font-weight: 300; color: rgba(248,247,243,0.6); max-width: 640px; line-height: 1.8; margin-bottom: 2.5rem; }
+  .country-stat-row { display: flex; gap: 3rem; flex-wrap: wrap; } .country-stat { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(248,247,243,0.45); }
+  .country-stat strong { display: block; font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-style: italic; color: var(--gold); text-transform: none; letter-spacing: 0; margin-bottom: 0.2rem; }
+  section { padding: 6rem 5rem; max-width: 1300px; margin: 0 auto; } @media (max-width: 700px) { section { padding: 4rem 1.8rem; } }
+  .section-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 300; margin-bottom: 1.4rem; max-width: 700px; } .section-title em { color: var(--gold); font-style: italic; }
+  .reading-col { max-width: 720px; } .reading-col p { font-family: 'Inter', sans-serif; font-size: 1rem; font-weight: 300; line-height: 1.9; color: var(--graphite); margin-bottom: 1.3rem; } .reveal { opacity: 0; transform: translateY(40px); }
+  .sector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--stone); border: 1px solid var(--stone); margin-top: 1rem; } @media (max-width: 700px) { .sector-grid { grid-template-columns: 1fr; } }
+  .sector-block { background: var(--ivory); padding: 2.3rem 2rem; } .sector-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; margin-bottom: 0.6rem; } .sector-desc { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--slate); line-height: 1.7; }
+  .city-list { display: flex; flex-direction: column; border-top: 1px solid var(--stone); margin-top: 1rem; } .city-row { display: flex; justify-content: space-between; align-items: center; padding: 1.6rem 0; border-bottom: 1px solid var(--stone); }
+  .city-name { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; } .city-note { font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--slate); }
+  .country-chart { background: var(--stone-light); padding: 3rem; margin-top: 1rem; } .chart-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; margin-bottom: 2rem; }
+  .chart-bars { display: flex; align-items: flex-end; gap: 1.2rem; height: 190px; } .chart-bar-wrap { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .chart-bar { width: 100%; background: linear-gradient(to top, var(--gold), var(--gold-light)); } .chart-bar-label { margin-top: 0.7rem; font-family: 'Inter', sans-serif; font-size: 0.66rem; color: var(--slate); text-align: center; }
+  .illustrative-note { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--slate); font-style: italic; margin-top: 1.2rem; }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1rem; } @media (max-width: 700px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card { text-decoration: none; color: inherit; border: 1px solid var(--stone); padding: 2rem; display: block; transition: border-color 0.3s ease; } .related-card:hover { border-color: var(--gold); }
+  .related-tag { font-family: 'Inter', sans-serif; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; } .related-title { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; }
+  .country-picker { display: flex; gap: 0.8rem; flex-wrap: wrap; margin-top: 1rem; } .country-pill { font-family: 'Inter', sans-serif; font-size: 0.8rem; border: 1px solid var(--stone); padding: 0.75rem 1.5rem; text-decoration: none; color: var(--graphite); }
+  .country-pill.active { background: var(--midnight); color: var(--ivory); border-color: var(--midnight); } .country-pill:hover:not(.active) { border-color: var(--gold); color: var(--gold); }
+  .sources-list { margin-top: 1rem; border-top: 1px solid var(--stone); } .sources-list li { list-style: none; padding: 1.1rem 0; border-bottom: 1px solid var(--stone); font-family: 'Inter', sans-serif; font-size: 0.9rem; } .sources-list a { color: var(--graphite); } .sources-list a:hover { color: var(--gold); }
+  .btn-primary { padding: 1rem 2.4rem; background: var(--gold); color: var(--midnight); border: none; font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; }
+  .btn-secondary { padding: 1rem 2.4rem; background: transparent; color: var(--ivory); border: 1px solid rgba(248,247,243,0.25); font-family: 'Inter', sans-serif; font-size: 0.74rem; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; }
+  footer { background: #060e18; color: rgba(248,247,243,0.4); padding: 3rem 5rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; } footer a { color: rgba(248,247,243,0.6); }
+  </style></head>
+  <body>
+  <div class="cursor"></div><div class="cursor-dot"></div>
+  <nav><a href="/intelligence/" class="nav-logo">FOIS <em>Intelligence</em></a><a href="/intelligence/library/" class="nav-back">← All Countries</a></nav>
+  
+  <section class="country-hero" style="max-width:none;"><div style="max-width:1300px; margin:0 auto;">
+  <p class="breadcrumb"><a href="/intelligence/">FOIS Intelligence</a> / <a href="/intelligence/library/">Countries</a> / Singapore</p>
+  <h1 class="country-title">Singapore: Southeast Asia's <em>Design Hub</em></h1>
+  <p class="country-sub">A land-scarce, policy-driven market where HDB flat renovation, a record construction pipeline and a binding "80-80-80 by 2030" green building mandate are reshaping how interiors get built.</p>
+  <div class="country-stat-row">
+  <div class="country-stat"><strong>S$47–53B</strong>Total construction demand forecast, 2026</div>
+  <div class="country-stat"><strong>6.8%</strong>Interior design market CAGR, 2026–2032</div>
+  <div class="country-stat"><strong>2026</strong>Last data update</div>
+  </div>
+  </div></section>
+  
+  <section>
+  <p class="section-eyebrow reveal">Overview</p>
+  <h2 class="section-title reveal">Renovation, not new build, drives the <em>volume</em></h2>
+  <div class="reading-col reveal">
+  <p>Singapore's Building and Construction Authority (BCA) projects total construction demand of S$47–53 billion in nominal terms for 2026, building on preliminary 2025 demand of S$50.5 billion — among the strongest years in a decade, driven by major projects including Changi Terminal 5, the Marina Bay Sands expansion, new hospital and MRT line construction, and a steady pipeline of HDB Build-To-Order housing. 6Wresearch puts the country's interior design market on a 6.8% compound annual growth rate through 2032, with year-on-year growth accelerating steadily from 4.5% in 2021 to 6.6% in 2025.</p>
+  <p>Unlike markets driven by greenfield construction, Singapore's interior demand is overwhelmingly a renovation story: continuous upgrading of Housing and Development Board (HDB) flats and private condominiums is the dominant residential driver, as homeowners invest in maximising compact living spaces, while corporate offices, hotels and retail outlets drive commercial demand for "modern and branded" interior layouts. Overlaying all of this is a hard policy constraint: the Singapore Green Building Masterplan's "80-80-80 by 2030" targets — 80% of buildings green by gross floor area (66% achieved as of December 2025), 80% of new developments at Super Low Energy standard (33% achieved), and an 80% energy-efficiency improvement from 2005 for best-in-class buildings (72% achieved) — meaning interior and fit-out specification is increasingly inseparable from sustainability compliance.</p>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow reveal">Sector Breakdown</p>
+  <h2 class="section-title reveal">Where Singapore's design demand sits</h2>
+  <div class="sector-grid">
+  <div class="sector-block reveal"><div class="sector-name">HDB &amp; Residential Renovation</div><div class="sector-desc">The dominant end-use segment, driven by continuous renovation cycles on HDB flats and private condominiums as owners upgrade compact living spaces.</div></div>
+  <div class="sector-block reveal"><div class="sector-name">Institutional &amp; Healthcare</div><div class="sector-desc">A named growth driver in BCA's 2026 construction outlook, including the new Tengah General &amp; Community Hospital and education-sector projects.</div></div>
+  <div class="sector-block reveal"><div class="sector-name">Hospitality</div><div class="sector-desc">Marina Bay Sands' integrated resort expansion anchors a hospitality fit-out pipeline tied to Singapore's position as a regional MICE and tourism hub.</div></div>
+  <div class="sector-block reveal"><div class="sector-name">Commercial Offices &amp; Retail</div><div class="sector-desc">Demand for "modern and branded" interior layouts among corporates and retail outlets, per 6Wresearch's market segmentation.</div></div>
+  <div class="sector-block reveal"><div class="sector-name">Green &amp; Sustainable Fit-Out</div><div class="sector-desc">Driven by the BCA Green Mark 2021 scheme and the Green Building Masterplan's 80-80-80 targets, with growing emphasis on maintainability and embodied-carbon reduction.</div></div>
+  <div class="sector-block reveal"><div class="sector-name">Smart &amp; Tech-Enabled Interiors</div><div class="sector-desc">Rising adoption of smart home technology, BIM and AR-based design consultation tools across both residential and commercial segments.</div></div>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow reveal">Cities</p>
+  <h2 class="section-title reveal">A single dense, high-value market</h2>
+  <div class="city-list">
+  <div class="city-row reveal"><div class="city-name">Singapore (Central &amp; Downtown Core)</div><div class="city-note">Commercial and hospitality fit-out concentration, including Marina Bay's integrated resort and CBD office stock</div></div>
+  <div class="city-row reveal"><div class="city-name">Tengah &amp; New Towns</div><div class="city-note">HDB Build-To-Order growth corridor, plus the new Tengah General &amp; Community Hospital driving institutional design demand</div></div>
+  <div class="city-row reveal"><div class="city-name">Housing Estates Island-Wide</div><div class="city-note">The volume driver: recurring HDB flat and condominium renovation cycles across every planning area</div></div>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow reveal">Data Highlight</p>
+  <h2 class="section-title reveal">Progress toward the <em>80-80-80</em> green targets</h2>
+  <div class="country-chart reveal">
+  <p class="chart-title">Singapore Green Building Masterplan: target vs. progress achieved (%, as of Dec 2025)</p>
+  <div class="chart-bars">
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height:66%;"></div><div class="chart-bar-label">Buildings green by GFA (target 80%)</div></div>
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height:33%;"></div><div class="chart-bar-label">New builds at Super Low Energy (target 80%)</div></div>
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height:72%;"></div><div class="chart-bar-label">Energy efficiency gain vs. 2005 (target 80%)</div></div>
+  </div>
+  </div>
+  <p class="illustrative-note">Figures are drawn from BCA's Singapore Green Building Masterplan progress reporting as of December 2025; see Sources below. FOIS Intelligence has not conducted an independent survey of this market.</p>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow reveal">Related Research</p>
+  <h2 class="section-title reveal">Continue reading</h2>
+  <div class="related-grid">
+  <a href="/intelligence/country/uae/" class="related-card reveal"><div class="related-tag">Country Intelligence</div><div class="related-title">UAE &amp; the Gulf Design Economy</div></a>
+  <a href="/intelligence/material-innovation-index/" class="related-card reveal"><div class="related-tag">Report</div><div class="related-title">Material Innovation Index</div></a>
+  <a href="/intelligence/white-paper-material-passports/" class="related-card reveal"><div class="related-tag">White Paper</div><div class="related-title">Material Passports: A Practitioner's Primer</div></a>
+  </div>
+  </section>
+  
+  <section style="background: var(--midnight); max-width: none; padding: 5rem;"><div style="max-width: 1300px; margin: 0 auto;">
+  <p class="section-eyebrow reveal" style="color: var(--gold);">Explore More Countries</p>
+  <h2 class="section-title reveal" style="color: var(--ivory);">Country <em>Intelligence</em> Library</h2>
+  <div class="country-picker">
+  <a href="/intelligence/country/united-kingdom/" class="country-pill">United Kingdom</a>
+  <a href="/intelligence/country/uae/" class="country-pill">UAE</a>
+  <a href="/intelligence/country/singapore/" class="country-pill active">Singapore</a>
+  <a href="/intelligence/library/?country=Nigeria" class="country-pill">Nigeria</a>
+  <a href="/intelligence/library/?country=United+States" class="country-pill">United States</a>
+  <a href="/intelligence/library/?country=Australia" class="country-pill">Australia</a>
+  </div>
+  </div></section>
+  
+  <section>
+  <p class="section-eyebrow reveal">Sources</p>
+  <h2 class="section-title reveal">Cited research</h2>
+  <ul class="sources-list">
+  <li><a href="https://www1.bca.gov.sg/resources/newsroom/steady-construction-demand-in-2026-as-singapore-steps-up-support-for-built-environment-firms-through-collaboration-and-innovation/" target="_blank" rel="noopener">Building and Construction Authority (BCA) — Steady Construction Demand in 2026</a></li>
+  <li><a href="https://www1.bca.gov.sg/sustainability/sgbmp/" target="_blank" rel="noopener">BCA — Singapore Green Building Masterplan ("80-80-80 by 2030")</a></li>
+  <li><a href="https://www.6wresearch.com/industry-report/singapore-interior-design-market-outlook" target="_blank" rel="noopener">6Wresearch — Singapore Interior Design Market Outlook</a></li>
+  <li><a href="https://secure.businesswire.com/news/home/20250829922794/en/Singapore-Construction-Industry-Report-2025-Market-to-Grow-at-a-CAGR-of-4.2-to-2034-Propelled-by-Increased-Demand-from-the-Commercial-Sector-Such-As-Healthcare-Education-and-Research---ResearchAndMarkets.com" target="_blank" rel="noopener">ResearchAndMarkets / BusinessWire — Singapore Construction Industry Report 2025</a></li>
+  <li><a href="https://www.trade.gov/market-intelligence/singapore-building-and-construction-sector" target="_blank" rel="noopener">U.S. International Trade Administration — Singapore Building &amp; Construction Sector</a></li>
+  <li><a href="https://www.sgbc.sg/sgbmp/" target="_blank" rel="noopener">Singapore Green Building Council — Singapore Green Building Masterplan</a></li>
+  </ul>
+  </section>
+  
+  <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/intelligence/">Back to FOIS Intelligence</a></footer>
+  <script>
+  gsap.registerPlugin(ScrollTrigger);
+  const cursor = document.querySelector('.cursor'); const cursorDot = document.querySelector('.cursor-dot');
+  document.addEventListener('mousemove', (e) => { gsap.to(cursor, { x: e.clientX - 9, y: e.clientY - 9, duration: 0.15 }); gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.05 }); });
+  document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+  document.querySelectorAll('.reveal').forEach((el, i) => { gsap.to(el, { scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" }, opacity: 1, y: 0, duration: 1, delay: (i % 4) * 0.05, ease: "power3.out" }); });
+  </script></body></html>

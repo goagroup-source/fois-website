@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hospitality Trends 2026 — FOIS Intelligence</title>
+  <meta name="description" content="FOIS Intelligence examines the data behind hospitality design's 2026 shift toward wellness-led revenue, biophilic materiality, and experience-driven investment.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+  :root { --midnight: #0B1F33; --ivory: #F8F7F3; --gold: #C8A96A; --gold-light: #d4b87a; --graphite: #2E3135; --stone: #D8D7D2; --stone-light: #E8E7E2; --slate: #5F6770; }
+  * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--ivory); color: var(--graphite); cursor: none; -webkit-font-smoothing: antialiased; }
+  .cursor { width: 18px; height: 18px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; mix-blend-mode: difference; }
+  .cursor.hover { transform: scale(2.2); } .cursor-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+  nav { position: fixed; top: 0; width: 100%; padding: 1.3rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11,31,51,0.96); backdrop-filter: blur(20px); }
+  .nav-logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); } .nav-logo em { color: var(--gold); font-style: italic; }
+  .nav-back { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,243,0.7); text-decoration: none; border: 1px solid rgba(248,247,243,0.25); padding: 0.65rem 1.4rem; }
+  .nav-back:hover { border-color: var(--gold); color: var(--gold); } @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } }
+  .report-hero { background: var(--midnight); color: var(--ivory); padding: 11rem 5rem 6rem; } @media (max-width: 700px) { .report-hero { padding: 9rem 1.8rem 4rem; } }
+  .report-breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; } .report-breadcrumb a { color: rgba(248,247,243,0.5); text-decoration: none; }
+  .report-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; max-width: 900px; margin-bottom: 1.5rem; } .report-title em { color: var(--gold); font-style: italic; }
+  .report-subtitle { font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 300; color: rgba(248,247,243,0.65); max-width: 640px; line-height: 1.75; margin-bottom: 2.5rem; }
+  .report-meta-row { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 3rem; } .report-meta { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(248,247,243,0.45); }
+  .report-meta strong { display: block; color: var(--ivory); font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; text-transform: none; letter-spacing: 0; margin-bottom: 0.2rem; }
+  .report-cta-group { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .btn-primary { padding: 1.05rem 2.6rem; background: var(--gold); color: var(--midnight); border: none; font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; } .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); }
+  .btn-secondary { padding: 1.05rem 2.6rem; background: transparent; color: var(--ivory); border: 1px solid rgba(248,247,243,0.25); font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; } .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  section { padding: 6rem 5rem; max-width: 1300px; margin: 0 auto; } @media (max-width: 700px) { section { padding: 4rem 1.8rem; } }
+  .section-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; margin-bottom: 1.6rem; max-width: 700px; } .section-title em { color: var(--gold); font-style: italic; }
+  .reading-col { max-width: 720px; } .reading-col p { font-family: 'Inter', sans-serif; font-size: 1.02rem; font-weight: 300; line-height: 1.9; color: var(--graphite); margin-bottom: 1.4rem; }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: var(--stone); border: 1px solid var(--stone); margin-top: 1rem; } @media (max-width: 700px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat-block { background: var(--ivory); padding: 2.5rem 1.8rem; min-width: 0; } .stat-block-value { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-style: italic; color: var(--gold); line-height: 1; margin-bottom: 0.6rem; } .stat-block-label { font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--slate); line-height: 1.5; }
+  .illustrative-note { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--slate); font-style: italic; margin-top: 1.2rem; }
+  .report-chart { background: var(--stone-light); padding: 3rem; margin-top: 1rem; } .chart-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; margin-bottom: 2rem; }
+  .chart-bars { display: flex; align-items: flex-end; gap: 1.4rem; height: 200px; } .chart-bar-wrap { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .chart-bar { width: 100%; background: linear-gradient(to top, var(--gold), var(--gold-light)); position: relative; } .chart-bar-label { margin-top: 0.8rem; font-family: 'Inter', sans-serif; font-size: 0.68rem; color: var(--slate); text-align: center; }
+  .authors-row { display: flex; gap: 3rem; flex-wrap: wrap; margin-top: 1rem; } .author-block { max-width: 320px; } .author-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.4rem; } .author-role { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--slate); line-height: 1.6; }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1rem; } @media (max-width: 700px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card { text-decoration: none; color: inherit; border: 1px solid var(--stone); padding: 2rem; display: block; transition: border-color 0.3s ease; } .related-card:hover { border-color: var(--gold); }
+  .related-tag { font-family: 'Inter', sans-serif; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; } .related-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; }
+  .sources-list { margin-top: 1rem; border-top: 1px solid var(--stone); } .sources-list li { list-style: none; padding: 1.1rem 0; border-bottom: 1px solid var(--stone); font-family: 'Inter', sans-serif; font-size: 0.9rem; } .sources-list a { color: var(--graphite); } .sources-list a:hover { color: var(--gold); }
+  .editorial-pullquote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.7rem; color: var(--gold); max-width: 680px; line-height: 1.4; margin: 2rem 0; border-left: 3px solid var(--gold); padding-left: 1.8rem; }
+  footer { background: #060e18; color: var(--ivory); padding: 3.5rem 5rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(248,247,243,0.4); } footer a { color: rgba(248,247,243,0.6); }
+  .reveal { opacity: 0; transform: translateY(40px); }
+  </style></head>
+  <body>
+  <div class="cursor"></div><div class="cursor-dot"></div>
+  <nav><a href="/intelligence/" class="nav-logo">FOIS <em>Intelligence</em></a><a href="/intelligence/" class="nav-back">← All Research</a></nav>
+  
+  <section class="report-hero" style="max-width: none; margin: 0;"><div style="max-width: 1300px; margin: 0 auto;">
+  <p class="report-breadcrumb"><a href="/intelligence/">FOIS Intelligence</a> / Sector Report</p>
+  <h1 class="report-title">Hospitality Trends <em>2026</em>: Designing for the Feeling Economy</h1>
+  <p class="report-subtitle">Capital is returning to hotel real estate faster than it left. What it is funding has changed — wellness commands the premium, biophilic materiality replaces decorative excess, and the guest experience has become the balance sheet's most closely watched line item.</p>
+  <div class="report-meta-row">
+  <div class="report-meta"><strong>Sept 2026</strong>Published</div>
+  <div class="report-meta"><strong>9 Min</strong>Reading Time</div>
+  <div class="report-meta"><strong>Hospitality</strong>Sector</div>
+  <div class="report-meta"><strong>Report</strong>Format</div>
+  </div>
+  <div class="report-cta-group"><button class="btn-primary">Download Full PDF</button><button class="btn-secondary">Read Executive Summary</button></div>
+  </div></section>
+  
+  <section>
+  <div class="reveal">
+  <p class="section-eyebrow">Executive Summary</p>
+  <h2 class="section-title">Wellness is no longer an amenity. It is a <em>pricing strategy</em>.</h2>
+  </div>
+  <div class="reading-col reveal">
+  <p>Hospitality design in 2026 is being reshaped less by aesthetics than by economics. Hotels that treat wellness, sleep, and sensory design as integrated infrastructure — not spa-floor add-ons — are commanding materially higher average daily rates, and investors are rewarding operators who can prove it. At the same time, capital that fled the sector during the pandemic downturn is returning, but selectively: it is following renovation-first, experience-led assets rather than ground-up supply.</p>
+  <p>Three forces are converging on the interior. First, a widening ultra-high-net-worth traveller base is pulling branded residences and fashion-house hospitality tie-ups into the mainstream design conversation. Second, Gen Z guests — raised inside always-on digital environments — are paying a premium for engineered disconnection: analogue textures, tech-free floors, and spaces that feel unmistakably physical. Third, an ageing and longevity-focused demographic is pushing wellness programming from a spa-menu line item into a design language that touches lighting, acoustics, materiality, and circulation across the entire property.</p>
+  <p>Sustainability has quietly moved from marketing copy to underwriting criteria: preservation-first renovations are being explicitly modelled against the embodied carbon of new-build alternatives, and the strongest 2026 case studies are the ones that kept structure and re-imagined everything else.</p>
+  </div>
+  </section>
+  
+  <section>
+  <div class="reveal">
+  <p class="section-eyebrow">Key Statistics</p>
+  <h2 class="section-title">The numbers behind the <em>shift</em></h2>
+  </div>
+  <div class="stat-grid reveal">
+  <div class="stat-block"><div class="stat-block-value">20–35%</div><div class="stat-block-label">Higher average daily rates reported by hotels with integrated wellness programming, compared with comparable non-wellness properties</div></div>
+  <div class="stat-block"><div class="stat-block-value">40%+</div><div class="stat-block-label">Above-average trip spend by dedicated wellness travellers, widening the revenue gap wellness-forward properties can capture</div></div>
+  <div class="stat-block"><div class="stat-block-value">510,810</div><div class="stat-block-label">Ultra-high-net-worth individuals globally (net worth above $30M) — a segment projected to grow 31% by 2030 and reshape ultra-luxury programming</div></div>
+  <div class="stat-block"><div class="stat-block-value">+22%</div><div class="stat-block-label">Growth in direct global hotel investment in 2025 versus the 2023 trough, as capital confidence returns to the sector</div></div>
+  </div>
+  <p class="illustrative-note">Figures are drawn from third-party industry and transaction research, not a FOIS-conducted survey. Full citations in Sources below.</p>
+  </div>
+  </section>
+  
+  <section>
+  <div class="reveal">
+  <p class="section-eyebrow">Data Highlight</p>
+  <h2 class="section-title">What is actually pulling <em>Gen Z</em> guests in</h2>
+  </div>
+  <div class="report-chart reveal">
+  <p class="chart-title">Share of Gen Z travellers citing each as a primary trip motivator</p>
+  <div class="chart-bars">
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height:154px;"></div><div class="chart-bar-label">77%<br>Curiosity-led travel</div></div>
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height:130px;"></div><div class="chart-bar-label">65%<br>Seeking joy</div></div>
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height:114px;"></div><div class="chart-bar-label">57%<br>Awe of nature</div></div>
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height:86px;"></div><div class="chart-bar-label">43%<br>See no line between virtual and physical experience</div></div>
+  </div>
+  </div>
+  <p class="illustrative-note">The apparent contradiction — a generation comfortable blurring physical and virtual life, still driven overwhelmingly by curiosity, joy, and nature — is precisely why "offline as luxury" positioning is gaining commercial traction in 2026 hotel design.</p>
+  </div>
+  </section>
+  
+  <section>
+  <div class="reveal">
+  <p class="section-eyebrow">Analysis</p>
+  <h2 class="section-title">Four design shifts worth <em>underwriting</em></h2>
+  </div>
+  <div class="reading-col reveal">
+  <p><strong>1. Biophilic materiality over decorative wellness.</strong> The spa is no longer where wellness lives — it is dispersed through circadian lighting, acoustic-first material selection, and natural materials in corridors, lobbies, and guestrooms. Properties reporting the strongest ADR premiums treat wellness as a whole-building design brief, not a discrete floor.</p>
+  <p><strong>2. Preservation as a carbon and cost strategy.</strong> Adaptive reuse case studies — most visibly resort renovations that retained existing structure rather than rebuilding — are being cited as achieving a small fraction of the embodied carbon of comparable new construction, while compressing both timeline and capital outlay. Expect embodied-carbon disclosure to become a standard line in hospitality design briefs before 2028.</p>
+  <p><strong>3. Food and beverage as a design anchor, not an afterthought.</strong> With a majority of luxury travellers now naming dining quality as a stay-deciding factor, F&B venues are being designed with the same spatial ambition as lobbies — often as the property's primary local-resident touchpoint, stabilising weekday revenue in gateway cities.</p>
+  <p><strong>4. Multigenerational and longevity design.</strong> Kids' programming quality now materially influences family booking decisions, while a parallel push toward longevity and Blue Zone-inspired wellness is reshaping amenity design for older travellers. The interior is being asked to serve both ends of the age spectrum inside the same footprint.</p>
+  </div>
+  <div class="editorial-pullquote">The properties winning capital in 2026 are not the ones with the newest floor plates — they are the ones that can prove, in dollars, what their design decisions do to a guest's nervous system.</div>
+  </div>
+  </section>
+  
+  <section>
+  <div class="reveal">
+  <p class="section-eyebrow">Methodology</p>
+  <h2 class="section-title">How this report was built</h2>
+  </div>
+  <div class="reading-col reveal">
+  <p>FOIS Intelligence does not operate a proprietary hospitality panel. This report synthesises published research and transaction data from hospitality real estate advisors, design consultancies, and hospitality trade press — cross-referenced for consistency and cited individually below. Where a figure originates from a named third-party survey or dataset, that source is credited rather than presented as FOIS's own fieldwork.</p>
+  <p>Statistics reflect the most recent publicly available data as of September 2026 and should be read as directional industry signal rather than property-level guarantees.</p>
+  </div>
+  </section>
+  
+  <section>
+  <div class="reveal">
+  <p class="section-eyebrow">Authored By</p>
+  <h2 class="section-title">FOIS Intelligence <em>Research Team</em></h2>
+  </div>
+  <div class="authors-row reveal">
+  <div class="author-block"><div class="author-name">FOIS Intelligence Research Team</div><div class="author-role">The research and editorial desk of Future of Interior Spaces, compiling and contextualising published hospitality, real estate, and design data for practitioners across the interior design industry.</div></div>
+  </div>
+  </section>
+  
+  <section>
+  <div class="reveal">
+  <p class="section-eyebrow">Related Research</p>
+  <h2 class="section-title">Continue <em>reading</em></h2>
+  </div>
+  <div class="related-grid reveal">
+  <a href="/intelligence/material-innovation-index/" class="related-card"><div class="related-tag">Materials</div><div class="related-title">Material Innovation Index</div></a>
+  <a href="/intelligence/country/uae/" class="related-card"><div class="related-tag">Country Intelligence</div><div class="related-title">UAE & the Gulf Design Economy</div></a>
+  <a href="/intelligence/interview-ageing-populations/" class="related-card"><div class="related-tag">Interview</div><div class="related-title">In Conversation: Designing for Ageing Populations</div></a>
+  </div>
+  </section>
+  
+  <section>
+  <div class="reveal">
+  <p class="section-eyebrow">Sources</p>
+  <h2 class="section-title">Further <em>reading</em></h2>
+  </div>
+  <ul class="sources-list reveal">
+  <li><a href="https://www.jll.com/en-us/newsroom/2026-global-hotel-investment-outlook-report" target="_blank" rel="noopener">JLL — 2026 Global Hotel Investment Outlook</a></li>
+  <li><a href="https://www.gensler.com/blog/trends-to-watch-whats-next-for-hotels-and-hospitality" target="_blank" rel="noopener">Gensler — Trends to Watch: What's Next for Hotels and Hospitality</a></li>
+  <li><a href="https://www.hospitalitynet.org/news/4129938.html" target="_blank" rel="noopener">HospitalityNet — Five Trends Shaping the Hospitality Landscape in 2026</a></li>
+  <li><a href="https://www.watg.com/interior-design-trends-2026-authenticity-resonance-and-resilience/" target="_blank" rel="noopener">WATG — Interior Design Trends 2026: Authenticity, Resonance, and Resilience</a></li>
+  <li><a href="https://horwathhtl.com/insights/" target="_blank" rel="noopener">Horwath HTL — Insights</a></li>
+  </ul>
+  </div>
+  </section>
+  
+  <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/intelligence/">Back to FOIS Intelligence</a></footer>
+  <script>
+  gsap.registerPlugin(ScrollTrigger);
+  const cursor = document.querySelector('.cursor'); const cursorDot = document.querySelector('.cursor-dot');
+  document.addEventListener('mousemove', (e) => { gsap.to(cursor, { x: e.clientX - 9, y: e.clientY - 9, duration: 0.15 }); gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.05 }); });
+  document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+  document.querySelectorAll('.reveal').forEach((el, i) => { gsap.to(el, { scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" }, opacity: 1, y: 0, duration: 1, delay: (i % 4) * 0.05, ease: "power3.out" }); });
+  </script></body></html>

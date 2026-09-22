@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Future Homes Report — FOIS Intelligence</title>
+  <meta name="description" content="How smaller footprints, multigenerational living, home-office integration, smart home technology and wellness features are reshaping residential design.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+  :root { --midnight: #0B1F33; --ivory: #F8F7F3; --gold: #C8A96A; --gold-light: #d4b87a; --graphite: #2E3135; --stone: #D8D7D2; --stone-light: #E8E7E2; --slate: #5F6770; }
+  * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--ivory); color: var(--graphite); cursor: none; -webkit-font-smoothing: antialiased; }
+  .cursor { width: 18px; height: 18px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; mix-blend-mode: difference; }
+  .cursor.hover { transform: scale(2.2); } .cursor-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+  nav { position: fixed; top: 0; width: 100%; padding: 1.3rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11,31,51,0.96); backdrop-filter: blur(20px); }
+  .nav-logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); } .nav-logo em { color: var(--gold); font-style: italic; }
+  .nav-back { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,243,0.7); text-decoration: none; border: 1px solid rgba(248,247,243,0.25); padding: 0.65rem 1.4rem; }
+  .nav-back:hover { border-color: var(--gold); color: var(--gold); } @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } }
+  .report-hero { background: var(--midnight); color: var(--ivory); padding: 11rem 5rem 6rem; } @media (max-width: 700px) { .report-hero { padding: 9rem 1.8rem 4rem; } }
+  .report-breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; } .report-breadcrumb a { color: rgba(248,247,243,0.5); text-decoration: none; }
+  .report-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; max-width: 900px; margin-bottom: 1.5rem; } .report-title em { color: var(--gold); font-style: italic; }
+  .report-subtitle { font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 300; color: rgba(248,247,243,0.65); max-width: 640px; line-height: 1.75; margin-bottom: 2.5rem; }
+  .report-meta-row { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 3rem; } .report-meta { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(248,247,243,0.45); }
+  .report-meta strong { display: block; color: var(--ivory); font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; text-transform: none; letter-spacing: 0; margin-bottom: 0.2rem; }
+  .report-cta-group { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .btn-primary { padding: 1.05rem 2.6rem; background: var(--gold); color: var(--midnight); border: none; font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; } .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); }
+  .btn-secondary { padding: 1.05rem 2.6rem; background: transparent; color: var(--ivory); border: 1px solid rgba(248,247,243,0.25); font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; } .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  section { padding: 6rem 5rem; max-width: 1300px; margin: 0 auto; } @media (max-width: 700px) { section { padding: 4rem 1.8rem; } }
+  .section-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; margin-bottom: 1.6rem; max-width: 700px; } .section-title em { color: var(--gold); font-style: italic; }
+  .reading-col { max-width: 720px; } .reading-col p { font-family: 'Inter', sans-serif; font-size: 1.02rem; font-weight: 300; line-height: 1.9; color: var(--graphite); margin-bottom: 1.4rem; }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: var(--stone); border: 1px solid var(--stone); margin-top: 1rem; } @media (max-width: 700px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat-block { background: var(--ivory); padding: 2.5rem 1.8rem; min-width: 0; } .stat-block-value { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-style: italic; color: var(--gold); line-height: 1; margin-bottom: 0.6rem; } .stat-block-label { font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--slate); line-height: 1.5; }
+  .illustrative-note { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--slate); font-style: italic; margin-top: 1.2rem; }
+  .report-chart { background: var(--stone-light); padding: 3rem; margin-top: 1rem; } .chart-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; margin-bottom: 2rem; }
+  .chart-bars { display: flex; align-items: flex-end; gap: 1.4rem; height: 200px; } .chart-bar-wrap { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .chart-bar { width: 100%; background: linear-gradient(to top, var(--gold), var(--gold-light)); position: relative; } .chart-bar-label { margin-top: 0.8rem; font-family: 'Inter', sans-serif; font-size: 0.68rem; color: var(--slate); text-align: center; }
+  .chart-bar-value { position: absolute; top: -1.8rem; left: 0; right: 0; text-align: center; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--graphite); }
+  .sector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--stone); border: 1px solid var(--stone); margin-top: 1rem; } @media (max-width: 700px) { .sector-grid { grid-template-columns: 1fr; } }
+  .sector-block { background: var(--ivory); padding: 2.3rem 2rem; } .sector-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; margin-bottom: 0.6rem; } .sector-desc { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--slate); line-height: 1.7; }
+  .authors-row { display: flex; gap: 3rem; flex-wrap: wrap; margin-top: 1rem; } .author-block { max-width: 320px; } .author-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.4rem; } .author-role { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--slate); line-height: 1.6; }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1rem; } @media (max-width: 700px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card { text-decoration: none; color: inherit; border: 1px solid var(--stone); padding: 2rem; display: block; transition: border-color 0.3s ease; } .related-card:hover { border-color: var(--gold); }
+  .related-tag { font-family: 'Inter', sans-serif; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; } .related-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; }
+  .sources-list { margin-top: 1rem; border-top: 1px solid var(--stone); } .sources-list li { list-style: none; padding: 1.1rem 0; border-bottom: 1px solid var(--stone); font-family: 'Inter', sans-serif; font-size: 0.9rem; } .sources-list a { color: var(--graphite); } .sources-list a:hover { color: var(--gold); }
+  footer { background: #060e18; color: var(--ivory); padding: 3.5rem 5rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(248,247,243,0.4); } footer a { color: rgba(248,247,243,0.6); }
+  .reveal { opacity: 0; transform: translateY(40px); }
+  </style></head>
+  <body>
+  <div class="cursor"></div><div class="cursor-dot"></div>
+  <nav><a href="/intelligence/" class="nav-logo">FOIS <em>Intelligence</em></a><a href="/intelligence/" class="nav-back">← All Research</a></nav>
+  <section class="report-hero" style="max-width: none; margin: 0;"><div style="max-width: 1300px; margin: 0 auto;">
+  <p class="report-breadcrumb"><a href="/intelligence/">FOIS Intelligence</a> / Residential Design</p>
+  <h1 class="report-title">The Future <em>Homes</em> Report</h1>
+  <p class="report-subtitle">Smaller footprints, multigenerational households, home-office integration, connected systems and wellness features are no longer separate trends — together, they are redefining what a home is designed to do.</p>
+  <div class="report-meta-row">
+  <div class="report-meta"><strong>September 2026</strong>Published</div>
+  <div class="report-meta"><strong>5</strong>Trends Covered</div>
+  <div class="report-meta"><strong>11 min</strong>Read Time</div>
+  <div class="report-meta"><strong>24 pages</strong>Full PDF</div>
+  </div>
+  <div class="report-cta-group"><button class="btn-primary">Download Full PDF</button><button class="btn-secondary">Read Executive Summary</button></div>
+  </div></section>
+  
+  <section>
+  <p class="section-eyebrow">Executive Summary</p>
+  <h2 class="section-title">The home is being <em>re-programmed</em></h2>
+  <div class="reading-col">
+  <p>The residential brief has quietly rewritten itself over the last decade. Affordability pressure is shrinking the average footprint even as more generations share it; a majority of employed people now do at least some work from home, turning a spare corner into functional infrastructure; and a home's systems and surfaces are increasingly expected to actively support health rather than simply shelter it.</p>
+  <p>None of these shifts is hypothetical. They show up in Census-adjacent housing data, in labour-market surveys, and in the balance sheets of the smart-home and wellness-real-estate industries. What is new is how tightly they interact: a smaller home has to work harder per square foot, which is exactly why home offices, adaptable guest/elder suites, and integrated technology are being designed in from the start rather than retrofitted.</p>
+  <p>This report sets out the five forces we see doing the most to reshape residential design briefs today, with the market and demographic data behind each one.</p>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow">Key Statistics</p>
+  <h2 class="section-title">Five numbers that define the brief</h2>
+  <div class="stat-grid">
+  <div class="stat-block"><div class="stat-block-value">59.7M</div><div class="stat-block-label">Americans lived in multigenerational households in 2021 — up from 14.5 million in 1971, a roughly fourfold increase.</div></div>
+  <div class="stat-block"><div class="stat-block-value">2,176 sq ft</div><div class="stat-block-label">median size of new US single-family homes in Q3 2025, continuing a decline driven by affordability pressure.</div></div>
+  <div class="stat-block"><div class="stat-block-value">$887B</div><div class="stat-block-label">projected global smart home market size by 2033, up from $162.8B in 2025 — a 23.1% CAGR.</div></div>
+  <div class="stat-block"><div class="stat-block-value">$1.1T</div><div class="stat-block-label">projected value of the global wellness real estate market by 2029, nearly double its $584B value in 2024.</div></div>
+  </div>
+  <p class="illustrative-note">Figures above are drawn from published demographic and market research cited in Sources below — not from a FOIS-run survey or proprietary panel.</p>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow">The Five Forces</p>
+  <h2 class="section-title">What's actually reshaping the <em>brief</em></h2>
+  <div class="sector-grid">
+  <div class="sector-block"><h3 class="sector-name">Smaller, Harder-Working Footprints</h3><p class="sector-desc">New US single-family homes have trended smaller since 2015 as affordability pressure pushes buyers toward efficient, well-planned layouts over sheer square footage — placing a premium on flexible, multi-use rooms.</p></div>
+  <div class="sector-block"><h3 class="sector-name">Multigenerational Living</h3><p class="sector-desc">The population living in multigenerational US households has roughly quadrupled since 1971, now spanning nearly a fifth of the country — driving demand for semi-private suites, dual kitchens and adaptable ground-floor bedrooms.</p></div>
+  <div class="sector-block"><h3 class="sector-name">Home-Office Integration</h3><p class="sector-desc">Roughly 58% of employed Americans report having the opportunity to work from home at least one day a week, making a dedicated, acoustically separated workspace a default line item rather than an afterthought.</p></div>
+  <div class="sector-block"><h3 class="sector-name">Smart Home Technology</h3><p class="sector-desc">Connected lighting, climate, security and energy systems are moving from optional upgrade to baseline expectation, with the global smart home market forecast to grow more than fivefold between 2025 and 2033.</p></div>
+  <div class="sector-block"><h3 class="sector-name">Wellness Features</h3><p class="sector-desc">Air quality, circadian lighting, water quality and biophilic design are shifting from wellness-brand amenity to mainstream residential spec, tracked by a wellness real estate market forecast to nearly double by 2029.</p></div>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow">Data Highlight</p>
+  <h2 class="section-title">Growth rates, compared</h2>
+  <div class="report-chart">
+  <p class="chart-title">Projected compound annual growth rate (CAGR) by residential trend category</p>
+  <div class="chart-bars">
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height: 100%;"><div class="chart-bar-value">23.1%</div></div><div class="chart-bar-label">Smart Home Technology<br>(2026–2033)</div></div>
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height: 70%;"><div class="chart-bar-value">16.1%</div></div><div class="chart-bar-label">Mass Timber / Sustainable Construction<br>(2026–2033)</div></div>
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height: 58%;"><div class="chart-bar-value">13.5%</div></div><div class="chart-bar-label">Wellness Real Estate<br>(2024–2029, implied)</div></div>
+  <div class="chart-bar-wrap"><div class="chart-bar" style="height: 32%;"><div class="chart-bar-value">7.5%</div></div><div class="chart-bar-label">Recycled &amp; Circular Materials<br>(2024–2030)</div></div>
+  </div>
+  </div>
+  <p class="illustrative-note">Wellness real estate CAGR is calculated by FOIS Intelligence from Global Wellness Institute's published 2024 and 2029 market-size figures; all other rates are reported directly by the cited source.</p>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow">Methodology</p>
+  <h2 class="section-title">How this report was built</h2>
+  <div class="reading-col">
+  <p>This briefing synthesises published demographic research, government and industry housing data, and market analyst reporting, reviewed by the FOIS Intelligence editorial team — it does not report a FOIS-run survey of practitioners or homeowners. Where a growth rate is not published directly by the source, FOIS Intelligence notes that it has calculated the figure from the source's own published data points. Every statistic is attributed to its original publisher in Sources below, and should be read as that publisher's data, not as independently verified by FOIS.</p>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow">Authored By</p>
+  <h2 class="section-title">FOIS Intelligence</h2>
+  <div class="authors-row">
+  <div class="author-block"><div class="author-name">FOIS Intelligence Editorial Team</div><div class="author-role">Research, synthesis and fact-checking for Future of Interior Spaces briefings and reports.</div></div>
+  <div class="author-block"><div class="author-name">Maven School of Interior Decoration and Design</div><div class="author-role">Residential design faculty review, provided as part of FOIS's founding partnership with Maven.</div></div>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow">Related Research</p>
+  <h2 class="section-title">Continue reading</h2>
+  <div class="related-grid">
+  <a href="/intelligence/material-innovation-index/" class="related-card"><div class="related-tag">Materials &amp; Innovation</div><div class="related-title">Material Innovation Index</div></a>
+  <a href="/intelligence/interview-ageing-populations/" class="related-card"><div class="related-tag">In Conversation</div><div class="related-title">Designing for Ageing Populations</div></a>
+  <a href="/intelligence/ai-adoption-interior-design/" class="related-card"><div class="related-tag">Technology</div><div class="related-title">AI Adoption in Interior Design</div></a>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow">Sources</p>
+  <h2 class="section-title">Cited in this report</h2>
+  <ul class="sources-list">
+  <li><a href="https://www.pewresearch.org/social-trends/2022/03/24/the-demographics-of-multigenerational-households/" target="_blank" rel="noopener">Pew Research Center — The Demographics of Multigenerational Households</a></li>
+  <li><a href="https://www.nahb.org/blog/2026/01/Single-Family-Home-Size-Continues-to-Decline" target="_blank" rel="noopener">National Association of Home Builders / Eye on Housing — Single-Family Home Size Continues to Decline</a></li>
+  <li><a href="https://www.grandviewresearch.com/industry-analysis/smart-homes-industry" target="_blank" rel="noopener">Grand View Research — Smart Home Market Size, Share &amp; Growth Report</a></li>
+  <li><a href="https://globalwellnessinstitute.org/press-room/press-releases/build-well-to-live-well-2025/" target="_blank" rel="noopener">Global Wellness Institute — Wellness Real Estate Market: Build Well to Live Well 2025</a></li>
+  <li><a href="https://www.mckinsey.com/industries/real-estate/our-insights/americans-are-embracing-flexible-work-and-they-want-more-of-it" target="_blank" rel="noopener">McKinsey &amp; Company — American Opportunity Survey: Americans Are Embracing Flexible Work</a></li>
+  <li><a href="https://www.grandviewresearch.com/industry-analysis/cross-laminated-timber-market" target="_blank" rel="noopener">Grand View Research — Cross Laminated Timber Market Report</a></li>
+  </ul>
+  </section>
+  
+  <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/intelligence/">Back to FOIS Intelligence</a></footer>
+  <script>
+  gsap.registerPlugin(ScrollTrigger);
+  const cursor = document.querySelector('.cursor'); const cursorDot = document.querySelector('.cursor-dot');
+  document.addEventListener('mousemove', (e) => { gsap.to(cursor, { x: e.clientX - 9, y: e.clientY - 9, duration: 0.15 }); gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.05 }); });
+  document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+  document.querySelectorAll('.reveal').forEach((el, i) => { gsap.to(el, { scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" }, opacity: 1, y: 0, duration: 1, delay: (i % 4) * 0.05, ease: "power3.out" }); });
+  </script></body></html>

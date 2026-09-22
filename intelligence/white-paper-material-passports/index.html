@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Material Passports: A Practitioner's Primer — FOIS Intelligence</title>
+  <meta name="description" content="What material passports are, why they matter for circularity and deconstruction, and a practical checklist for interior designers who want to start using them.">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+  :root { --midnight: #0B1F33; --ivory: #F8F7F3; --gold: #C8A96A; --gold-light: #d4b87a; --graphite: #2E3135; --stone: #D8D7D2; --stone-light: #E8E7E2; --slate: #5F6770; }
+  * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--ivory); color: var(--graphite); cursor: none; -webkit-font-smoothing: antialiased; }
+  .cursor { width: 18px; height: 18px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; mix-blend-mode: difference; }
+  .cursor.hover { transform: scale(2.2); } .cursor-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+  nav { position: fixed; top: 0; width: 100%; padding: 1.3rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11,31,51,0.96); backdrop-filter: blur(20px); }
+  .nav-logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); } .nav-logo em { color: var(--gold); font-style: italic; }
+  .nav-back { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,243,0.7); text-decoration: none; border: 1px solid rgba(248,247,243,0.25); padding: 0.65rem 1.4rem; }
+  .nav-back:hover { border-color: var(--gold); color: var(--gold); } @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } }
+  .report-hero { background: var(--midnight); color: var(--ivory); padding: 11rem 5rem 6rem; } @media (max-width: 700px) { .report-hero { padding: 9rem 1.8rem 4rem; } }
+  .report-breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; } .report-breadcrumb a { color: rgba(248,247,243,0.5); text-decoration: none; }
+  .report-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; max-width: 900px; margin-bottom: 1.5rem; } .report-title em { color: var(--gold); font-style: italic; }
+  .report-subtitle { font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 300; color: rgba(248,247,243,0.65); max-width: 640px; line-height: 1.75; margin-bottom: 2.5rem; }
+  .report-meta-row { display: flex; gap: 2.5rem; flex-wrap: wrap; margin-bottom: 3rem; } .report-meta { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(248,247,243,0.45); }
+  .report-meta strong { display: block; color: var(--ivory); font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-style: italic; text-transform: none; letter-spacing: 0; margin-bottom: 0.2rem; }
+  .report-cta-group { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .btn-primary { padding: 1.05rem 2.6rem; background: var(--gold); color: var(--midnight); border: none; font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; } .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); }
+  .btn-secondary { padding: 1.05rem 2.6rem; background: transparent; color: var(--ivory); border: 1px solid rgba(248,247,243,0.25); font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; } .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  section { padding: 6rem 5rem; max-width: 1300px; margin: 0 auto; } @media (max-width: 700px) { section { padding: 4rem 1.8rem; } }
+  .section-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; margin-bottom: 1.6rem; max-width: 700px; } .section-title em { color: var(--gold); font-style: italic; }
+  .reading-col { max-width: 720px; } .reading-col p { font-family: 'Inter', sans-serif; font-size: 1.02rem; font-weight: 300; line-height: 1.9; color: var(--graphite); margin-bottom: 1.4rem; }
+  .reading-col blockquote { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.4rem; color: var(--midnight); border-left: 3px solid var(--gold); padding-left: 1.6rem; margin: 2rem 0; line-height: 1.5; }
+  .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5px; background: var(--stone); border: 1px solid var(--stone); margin-top: 1rem; } @media (max-width: 700px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+  .stat-block { background: var(--ivory); padding: 2.5rem 1.8rem; min-width: 0; } .stat-block-value { font-family: 'Cormorant Garamond', serif; font-size: 2.6rem; font-style: italic; color: var(--gold); line-height: 1; margin-bottom: 0.6rem; } .stat-block-label { font-family: 'Inter', sans-serif; font-size: 0.82rem; color: var(--slate); line-height: 1.5; }
+  .illustrative-note { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--slate); font-style: italic; margin-top: 1.2rem; }
+  .report-chart { background: var(--stone-light); padding: 3rem; margin-top: 1rem; } .chart-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.2rem; margin-bottom: 2rem; }
+  .chart-bars { display: flex; align-items: flex-end; gap: 1.4rem; height: 200px; } .chart-bar-wrap { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+  .chart-bar { width: 100%; background: linear-gradient(to top, var(--gold), var(--gold-light)); position: relative; } .chart-bar-label { margin-top: 0.8rem; font-family: 'Inter', sans-serif; font-size: 0.68rem; color: var(--slate); text-align: center; }
+  .sector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--stone); border: 1px solid var(--stone); margin-top: 1rem; } @media (max-width: 700px) { .sector-grid { grid-template-columns: 1fr; } }
+  .sector-block { background: var(--ivory); padding: 2.3rem 2rem; } .sector-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; margin-bottom: 0.6rem; } .sector-desc { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--slate); line-height: 1.7; }
+  .step-number { display: inline-block; font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.6rem; color: var(--gold); margin-bottom: 0.5rem; }
+  .authors-row { display: flex; gap: 3rem; flex-wrap: wrap; margin-top: 1rem; } .author-block { max-width: 320px; } .author-name { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; margin-bottom: 0.4rem; } .author-role { font-family: 'Inter', sans-serif; font-size: 0.8rem; color: var(--slate); line-height: 1.6; }
+  .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1rem; } @media (max-width: 700px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card { text-decoration: none; color: inherit; border: 1px solid var(--stone); padding: 2rem; display: block; transition: border-color 0.3s ease; } .related-card:hover { border-color: var(--gold); }
+  .related-tag { font-family: 'Inter', sans-serif; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; } .related-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; }
+  .sources-list { margin-top: 1rem; border-top: 1px solid var(--stone); } .sources-list li { list-style: none; padding: 1.1rem 0; border-bottom: 1px solid var(--stone); font-family: 'Inter', sans-serif; font-size: 0.9rem; } .sources-list a { color: var(--graphite); } .sources-list a:hover { color: var(--gold); }
+  footer { background: #060e18; color: var(--ivory); padding: 3.5rem 5rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(248,247,243,0.4); } footer a { color: rgba(248,247,243,0.6); }
+  .reveal { opacity: 0; transform: translateY(40px); }
+  </style></head>
+  <body>
+  <div class="cursor"></div><div class="cursor-dot"></div>
+  <nav><a href="/intelligence/" class="nav-logo">FOIS <em>Intelligence</em></a><a href="/intelligence/" class="nav-back">← All Research</a></nav>
+  <section class="report-hero" style="max-width: none; margin: 0;"><div style="max-width: 1300px; margin: 0 auto;">
+  <p class="report-breadcrumb"><a href="/intelligence/">FOIS Intelligence</a> / White Paper</p>
+  <h1 class="report-title">Material <em>Passports</em>: A Practitioner's Primer</h1>
+  <p class="report-subtitle">What material passports actually are, why they matter for circularity and deconstruction, and how a working interior designer can start using one on their next project.</p>
+  <div class="report-meta-row">
+  <div class="report-meta"><strong>September 2026</strong>Published</div>
+  <div class="report-meta"><strong>6</strong>Steps to Start</div>
+  <div class="report-meta"><strong>10 min</strong>Read Time</div>
+  <div class="report-meta"><strong>18 pages</strong>Full PDF</div>
+  </div>
+  <div class="report-cta-group"><button class="btn-primary">Download Full PDF</button><button class="btn-secondary">Read Executive Summary</button></div>
+  </div></section>
+  
+  <section>
+  <p class="section-eyebrow">Introduction</p>
+  <h2 class="section-title">Waste is material <em>without an identity</em></h2>
+  <div class="reading-col">
+  <p>A material passport is a structured record — attached to a product, a component or a whole building — that documents what something is made of, where it came from, what condition it's in, and how it can be removed and reused at the end of its current life. Think of it as a product's CV: composition, origin, installation method, and disassembly instructions, kept somewhere it can actually be found again in ten or twenty years.</p>
+  <p>The idea has existed in EU circular-economy policy circles for close to a decade, most notably through the Buildings as Material Banks (BAMB) research project, and is now migrating from academic pilots into commercial platforms and, gradually, into interior design practice. It remains, for most practitioners, more talked about than used — which is exactly why this primer exists.</p>
+  <blockquote>"Waste is material without an identity." — Thomas Rau, architect and circular-economy advocate, on the core problem material passports are built to solve.</blockquote>
+  <p>For interior designers specifically, material passports matter because interiors churn far faster than the buildings that hold them — a fit-out is often stripped and replaced well within a building's structural lifespan. Without a record of what's actually in a wall, a floor or a ceiling system, almost everything removed during that churn is downcycled or landfilled rather than recovered.</p>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow">Key Statistics</p>
+  <h2 class="section-title">Why this isn't a niche concern</h2>
+  <div class="stat-grid">
+  <div class="stat-block"><div class="stat-block-value">35%</div><div class="stat-block-label">of all waste generated in the EU comes from construction and demolition activity.</div></div>
+  <div class="stat-block"><div class="stat-block-value">≈50%</div><div class="stat-block-label">of all materials extracted globally each year are consumed by the built environment.</div></div>
+  <div class="stat-block"><div class="stat-block-value">38%</div><div class="stat-block-label">potential cut in global CO2 emissions from building materials by 2050 under circular economy practices.</div></div>
+  <div class="stat-block"><div class="stat-block-value">300+</div><div class="stat-block-label">material passports produced under the EU-funded Buildings as Material Banks (BAMB) project, demonstrating feasibility at scale.</div></div>
+  </div>
+  <p class="illustrative-note">Figures above are drawn from published European Commission, Ellen MacArthur Foundation and EU Horizon 2020 project research cited in Sources below — not from a FOIS-run survey.</p>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow">How to Start</p>
+  <h2 class="section-title">A practitioner's <em>checklist</em></h2>
+  <div class="sector-grid">
+  <div class="sector-block"><span class="step-number">01</span><h3 class="sector-name">Audit What You Already Have</h3><p class="sector-desc">Before adopting any new tool, inventory the materials and products already specified in a current or recent project — composition, supplier, installation method and condition — even in a simple spreadsheet.</p></div>
+  <div class="sector-block"><span class="step-number">02</span><h3 class="sector-name">Choose a Format, Don't Invent One</h3><p class="sector-desc">Align with an established schema rather than building a bespoke system from scratch — BAMB-derived templates, dedicated platforms such as Madaster, or frameworks like the EU's Level(s) all give you a starting structure and a shared language with suppliers.</p></div>
+  <div class="sector-block"><span class="step-number">03</span><h3 class="sector-name">Capture Data at Specification, Not After</h3><p class="sector-desc">Record material data sheets, environmental product declarations (EPDs) and supplier information at the moment a product is chosen — retrofitting this information after installation is far harder and far less reliable.</p></div>
+  <div class="sector-block"><span class="step-number">04</span><h3 class="sector-name">Design for Disassembly</h3><p class="sector-desc">Specify mechanical fixings, reversible joints and accessible layers wherever budget and code allow — a passport is only useful if what it describes can actually be taken apart and recovered later.</p></div>
+  <div class="sector-block"><span class="step-number">05</span><h3 class="sector-name">Attach the Record to Something Durable</h3><p class="sector-desc">Link passport data to a BIM model, a shared digital register, or even a well-labelled PDF stored with the building's operations documents — so it survives staff turnover and outlives the original project team.</p></div>
+  <div class="sector-block"><span class="step-number">06</span><h3 class="sector-name">Ask Suppliers for the Data</h3><p class="sector-desc">Make EPDs and material composition data a standard procurement request, not a special one. Consistent demand from designers is what pushes manufacturers to provide this information as a matter of course.</p></div>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow">Methodology</p>
+  <h2 class="section-title">How this primer was built</h2>
+  <div class="reading-col">
+  <p>This primer synthesises published research on material passports and circular construction — including the EU-funded Buildings as Material Banks (BAMB) project, Ellen MacArthur Foundation circularity research, European Commission waste statistics and industry commentary — reviewed by the FOIS Intelligence editorial team. It does not report original FOIS data collection or a survey of practitioners; every figure and claim is attributed to its original source in the Sources section below.</p>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow">Authored By</p>
+  <h2 class="section-title">FOIS Intelligence</h2>
+  <div class="authors-row">
+  <div class="author-block"><div class="author-name">FOIS Intelligence Editorial Team</div><div class="author-role">Research, synthesis and fact-checking for Future of Interior Spaces briefings and white papers.</div></div>
+  <div class="author-block"><div class="author-name">Maven School of Interior Decoration and Design</div><div class="author-role">Sustainability &amp; circularity faculty review, provided as part of FOIS's founding partnership with Maven.</div></div>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow">Related Research</p>
+  <h2 class="section-title">Continue reading</h2>
+  <div class="related-grid">
+  <a href="/intelligence/opinion-circularity/" class="related-card"><div class="related-tag">Opinion</div><div class="related-title">Why Circularity Can't Stay Optional</div></a>
+  <a href="/intelligence/material-innovation-index/" class="related-card"><div class="related-tag">Materials &amp; Innovation</div><div class="related-title">Material Innovation Index</div></a>
+  <a href="/intelligence/future-homes-report/" class="related-card"><div class="related-tag">Residential Design</div><div class="related-title">Future Homes Report</div></a>
+  </div>
+  </section>
+  
+  <section>
+  <p class="section-eyebrow">Sources</p>
+  <h2 class="section-title">Cited in this white paper</h2>
+  <ul class="sources-list">
+  <li><a href="https://www.bamb2020.eu/topics/materials-passports/" target="_blank" rel="noopener">BAMB (Buildings as Material Banks) — Materials Passports</a></li>
+  <li><a href="https://cordis.europa.eu/project/id/642384/results" target="_blank" rel="noopener">CORDIS / European Commission — BAMB Project Results (Horizon 2020, Grant #642384)</a></li>
+  <li><a href="https://www.metabolic.nl/news/circular-economy-materials-passports/" target="_blank" rel="noopener">Metabolic — Materials Passport for a Circular Economy</a></li>
+  <li><a href="https://www.ellenmacarthurfoundation.org/topics/built-environment/overview" target="_blank" rel="noopener">Ellen MacArthur Foundation — Circular Economy in Construction: Built Environment Overview</a></li>
+  <li><a href="https://eufactcheck.eu/factcheck/true-construction-is-responsible-for-producing-35-of-all-waste-in-the-eu/" target="_blank" rel="noopener">EU Fact Check — Construction Is Responsible for Producing 35% of All Waste in the EU</a></li>
+  <li><a href="https://www.troldtekt.com/themes/building-health-and-indoor-climate/new-materials-passports-can-make-building-projects-healthy-and-circular/" target="_blank" rel="noopener">Troldtekt — Materials Passports Can Make Building Projects Healthy and Circular</a></li>
+  </ul>
+  </section>
+  
+  <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/intelligence/">Back to FOIS Intelligence</a></footer>
+  <script>
+  gsap.registerPlugin(ScrollTrigger);
+  const cursor = document.querySelector('.cursor'); const cursorDot = document.querySelector('.cursor-dot');
+  document.addEventListener('mousemove', (e) => { gsap.to(cursor, { x: e.clientX - 9, y: e.clientY - 9, duration: 0.15 }); gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.05 }); });
+  document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+  document.querySelectorAll('.reveal').forEach((el, i) => { gsap.to(el, { scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" }, opacity: 1, y: 0, duration: 1, delay: (i % 4) * 0.05, ease: "power3.out" }); });
+  </script></body></html>
