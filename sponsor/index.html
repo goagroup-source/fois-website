@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor FOIS | Future of Interior Spaces</title>
+    <meta name="description" content="Partner with Future of Interior Spaces across the Conference, Awards, Intelligence research and community.">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+    :root { --midnight: #0B1F33; --ivory: #F8F7F3; --gold: #C8A96A; --gold-light: #d4b87a; --graphite: #2E3135; --stone: #D8D7D2; --stone-light: #E8E7E2; --slate: #5F6770; }
+    * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--ivory); color: var(--graphite); cursor: none; -webkit-font-smoothing: antialiased; }
+    .cursor { width: 18px; height: 18px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; mix-blend-mode: difference; }
+    .cursor.hover { transform: scale(2.2); } .cursor-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+    nav { position: fixed; top: 0; width: 100%; padding: 1.3rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11,31,51,0.96); backdrop-filter: blur(20px); }
+    .nav-logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); } .nav-logo em { color: var(--gold); font-style: italic; }
+    .nav-back { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,243,0.7); text-decoration: none; border: 1px solid rgba(248,247,243,0.25); padding: 0.65rem 1.4rem; }
+    .nav-back:hover { border-color: var(--gold); color: var(--gold); } @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } }
+    .report-hero { background: var(--midnight); color: var(--ivory); padding: 11rem 5rem 6rem; } @media (max-width: 700px) { .report-hero { padding: 9rem 1.8rem 4rem; } }
+    .report-breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; } .report-breadcrumb a { color: rgba(248,247,243,0.5); text-decoration: none; }
+    .report-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; max-width: 900px; margin-bottom: 1.5rem; } .report-title em { color: var(--gold); font-style: italic; }
+    .report-subtitle { font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 300; color: rgba(248,247,243,0.65); max-width: 640px; line-height: 1.75; margin-bottom: 2.5rem; }
+    .report-cta-group { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+    .btn-primary { padding: 1.05rem 2.6rem; background: var(--gold); color: var(--midnight); border: none; font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease;  overflow-wrap: anywhere;} .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); }
+    .btn-secondary { padding: 1.05rem 2.6rem; background: transparent; color: var(--ivory); border: 1px solid rgba(248,247,243,0.25); font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease;  overflow-wrap: anywhere;} .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+    section { padding: 6rem 5rem; max-width: 1300px; margin: 0 auto; } @media (max-width: 700px) { section { padding: 4rem 1.8rem; } }
+    .section-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; margin-bottom: 1.6rem; max-width: 700px; } .section-title em { color: var(--gold); font-style: italic; }
+    .reading-col { max-width: 720px; } .reading-col p { font-family: 'Inter', sans-serif; font-size: 1.02rem; font-weight: 300; line-height: 1.9; color: var(--graphite); margin-bottom: 1.4rem; }
+    .sector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--stone); border: 1px solid var(--stone); margin-top: 1rem; } @media (max-width: 700px) { .sector-grid { grid-template-columns: 1fr; } }
+    .sector-block { background: var(--ivory); padding: 2.3rem 2rem; min-width: 0; } .sector-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; margin-bottom: 0.6rem; } .sector-desc { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--slate); line-height: 1.7; }
+    .sector-desc a { color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(200,169,106,0.4); }
+    .sector-desc a:hover { border-bottom-color: var(--gold); }
+    .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1rem; } @media (max-width: 700px) { .related-grid { grid-template-columns: 1fr; } }
+    .related-card { text-decoration: none; color: inherit; border: 1px solid var(--stone); padding: 2rem; display: block; transition: border-color 0.3s ease; min-width: 0; } .related-card:hover { border-color: var(--gold); }
+    .related-tag { font-family: 'Inter', sans-serif; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; } .related-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; }
+    .illustrative-note { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--slate); font-style: italic; margin-top: 1.2rem; }
+    .data-teaser { background: var(--midnight); color: var(--ivory); text-align: center; padding: 5rem; } .data-teaser .section-eyebrow { color: var(--gold); } .data-teaser .section-title { color: var(--ivory); margin: 0 auto 1.4rem; } .data-teaser p { font-family: 'Inter', sans-serif; color: rgba(248,247,243,0.55); max-width: 560px; margin: 0 auto 2.2rem; line-height: 1.8; }
+    footer { background: #060e18; color: var(--ivory); padding: 3.5rem 5rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(248,247,243,0.4); } footer a { color: rgba(248,247,243,0.6); }
+    .reveal { opacity: 0; transform: translateY(40px); }
+    .newsletter-form { display: flex; gap: 0.8rem; max-width: 480px; margin: 0 auto; flex-wrap: wrap; justify-content: center; }
+    .newsletter-input { flex: 1; min-width: 220px; padding: 1.05rem 1.4rem; background: rgba(248,247,243,0.06); border: 1px solid rgba(248,247,243,0.25); color: var(--ivory); font-family: 'Inter', sans-serif; font-size: 0.85rem; }
+    .newsletter-input::placeholder { color: rgba(248,247,243,0.4); }
+    .swatch-row { display: flex; align-items: center; gap: 1rem; margin-bottom: 0.9rem; }
+    .swatch-box { width: 34px; height: 34px; border: 1px solid var(--stone); flex-shrink: 0; }
+    .swatch-label { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--graphite); min-width: 0; }
+    .swatch-label span { color: var(--slate); font-size: 0.78rem; }
+    </style></head>
+    <body>
+    <div class="cursor"></div><div class="cursor-dot"></div>
+    <nav><a href="/" class="nav-logo">Future of Interior <em>Spaces</em></a><a href="/" class="nav-back">← Back to FOIS</a></nav>
+  
+    <section class="report-hero" style="max-width: none; margin: 0;"><div style="max-width: 1300px; margin: 0 auto;">
+    <p class="report-breadcrumb"><a href="/">Future of Interior Spaces</a> / Sponsor FOIS</p>
+    <h1 class="report-title">Partner With <em>FOIS</em></h1>
+    <p class="report-subtitle">FOIS is building a single platform for the interior design industry — the Conference, research Intelligence, the Awards and an engaged community. For brands and manufacturers, that's one place to reach the whole field.</p>
+    <div class="report-cta-group"><a href="mailto:hello@futureofinteriorspaces.com?subject=Partnership%20Enquiry" class="btn-primary">Discuss Partnership</a></div>
+    </div></section>
+  
+    <section class="reveal">
+    <p class="section-eyebrow">Why Partner</p>
+    <h2 class="section-title">One industry, <em>several touchpoints</em></h2>
+    <div class="reading-col">
+    <p>FOIS is being built as a global initiative for the interior design industry, spanning research, editorial, education, recognition and an annual conference. As each part comes online, it creates a new way for a brand or manufacturer to reach the designers, architects and developers actually specifying and building interior spaces.</p>
+    <p>We're an early-stage platform, so partnerships today are about building something together from the ground up rather than buying into an established package.</p>
+    </div>
+    </section>
+  
+    <section class="reveal">
+    <p class="section-eyebrow">Where to Show Up</p>
+    <h2 class="section-title">Sponsorship <em>touchpoints</em></h2>
+    <div class="sector-grid">
+    <div class="sector-block"><h3 class="sector-name">Conference</h3><p class="sector-desc">Presence at the FOIS Conference as it comes together, from stage time to on-site branding.</p></div>
+    <div class="sector-block"><h3 class="sector-name">Awards</h3><p class="sector-desc">Association with the FOIS Awards as they recognise work across the industry.</p></div>
+    <div class="sector-block"><h3 class="sector-name">Intelligence Research</h3><p class="sector-desc">Backing for FOIS Intelligence's research as its reports and studies are developed.</p></div>
+    <div class="sector-block"><h3 class="sector-name">Community &amp; Newsletter</h3><p class="sector-desc">Visibility with the FOIS community as the Journal and newsletter audience grows.</p></div>
+    </div>
+    </section>
+  
+    <section class="data-teaser reveal" style="max-width: none;">
+    <p class="section-eyebrow">Let's Talk</p>
+    <h2 class="section-title">Start the <em>conversation</em></h2>
+    <p>Tell us a little about your brand and what you're hoping to get out of a partnership, and we'll take it from there.</p>
+    <a href="mailto:hello@futureofinteriorspaces.com?subject=Partnership%20Enquiry" class="btn-primary">Email hello@futureofinteriorspaces.com</a>
+    </section>
+  
+    <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/">Back to Homepage</a></footer>
+    <script>
+    gsap.registerPlugin(ScrollTrigger);
+    const cursor = document.querySelector('.cursor'); const cursorDot = document.querySelector('.cursor-dot');
+    document.addEventListener('mousemove', (e) => { gsap.to(cursor, { x: e.clientX - 9, y: e.clientY - 9, duration: 0.15 }); gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.05 }); });
+    document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+    document.querySelectorAll('.reveal').forEach((el, i) => { gsap.to(el, { scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" }, opacity: 1, y: 0, duration: 1, delay: (i % 4) * 0.05, ease: "power3.out" }); });
+    </script></body></html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookie Policy | Future of Interior Spaces</title>
+    <meta name="description" content="Cookie Policy for Future of Interior Spaces — an honest explanation of how, and whether, this site uses cookies.">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+    :root { --midnight: #0B1F33; --ivory: #F8F7F3; --gold: #C8A96A; --gold-light: #d4b87a; --graphite: #2E3135; --stone: #D8D7D2; --stone-light: #E8E7E2; --slate: #5F6770; }
+    * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--ivory); color: var(--graphite); cursor: none; -webkit-font-smoothing: antialiased; }
+    .cursor { width: 18px; height: 18px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; mix-blend-mode: difference; }
+    .cursor.hover { transform: scale(2.2); } .cursor-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+    nav { position: fixed; top: 0; width: 100%; padding: 1.3rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11,31,51,0.96); backdrop-filter: blur(20px); }
+    .nav-logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); } .nav-logo em { color: var(--gold); font-style: italic; }
+    .nav-back { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,243,0.7); text-decoration: none; border: 1px solid rgba(248,247,243,0.25); padding: 0.65rem 1.4rem; }
+    .nav-back:hover { border-color: var(--gold); color: var(--gold); } @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } }
+    .report-hero { background: var(--midnight); color: var(--ivory); padding: 11rem 5rem 6rem; } @media (max-width: 700px) { .report-hero { padding: 9rem 1.8rem 4rem; } }
+    .report-breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; } .report-breadcrumb a { color: rgba(248,247,243,0.5); text-decoration: none; }
+    .report-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; max-width: 900px; margin-bottom: 1.5rem; } .report-title em { color: var(--gold); font-style: italic; }
+    .report-subtitle { font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 300; color: rgba(248,247,243,0.65); max-width: 640px; line-height: 1.75; margin-bottom: 2.5rem; }
+    section { padding: 6rem 5rem; max-width: 1300px; margin: 0 auto; } @media (max-width: 700px) { section { padding: 4rem 1.8rem; } }
+    .section-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; margin-bottom: 1.6rem; max-width: 700px; } .section-title em { color: var(--gold); font-style: italic; }
+    .reading-col { max-width: 720px; } .reading-col p { font-family: 'Inter', sans-serif; font-size: 1.02rem; font-weight: 300; line-height: 1.9; color: var(--graphite); margin-bottom: 1.4rem; }
+    .reading-col h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; margin: 2rem 0 0.8rem; color: var(--graphite); }
+    .reading-col ul { margin: 0 0 1.4rem 1.3rem; } .reading-col li { font-family: 'Inter', sans-serif; font-size: 1.02rem; font-weight: 300; line-height: 1.85; color: var(--graphite); margin-bottom: 0.5rem; }
+    .illustrative-note { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--slate); font-style: italic; margin-top: 1.2rem; }
+    .draft-banner { background: var(--stone-light); border-left: 3px solid var(--gold); padding: 1.2rem 1.6rem; font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--graphite); line-height: 1.7; max-width: 720px; margin-bottom: 2rem; }
+    footer { background: #060e18; color: var(--ivory); padding: 3.5rem 5rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(248,247,243,0.4); } footer a { color: rgba(248,247,243,0.6); }
+    .reveal { opacity: 0; transform: translateY(40px); }
+    </style></head>
+    <body>
+    <div class="cursor"></div><div class="cursor-dot"></div>
+    <nav><a href="/" class="nav-logo">Future of Interior <em>Spaces</em></a><a href="/" class="nav-back">← Back to FOIS</a></nav>
+  
+    <section class="report-hero" style="max-width: none; margin: 0;"><div style="max-width: 1300px; margin: 0 auto;">
+    <p class="report-breadcrumb"><a href="/">Future of Interior Spaces</a> / Cookie Policy</p>
+    <h1 class="report-title">Cookie <em>Policy</em></h1>
+    <p class="report-subtitle">A plain explanation of how, and whether, this site uses cookies.</p>
+    </div></section>
+  
+    <section class="reveal">
+    <div class="draft-banner"><strong>This is a draft.</strong> This Cookie Policy is a reasonable, honest starting template describing this site's current and very limited use of cookies; it has not been reviewed by a lawyer and should be checked before being treated as final.</div>
+    <p class="section-eyebrow">Cookies</p>
+    <h2 class="section-title">Cookie <em>Policy</em></h2>
+    <div class="reading-col">
+    <p>Last updated: September 2026</p>
+  
+    <h3>1. The short answer</h3>
+    <p>This site does not currently use cookies for tracking, advertising, or analytics purposes. We do not run Google Analytics, Meta Pixel, or any similar tool, and no tracking cookies of any kind are set when you browse this site.</p>
+  
+    <h3>2. What is a cookie?</h3>
+    <p>A cookie is a small text file that a website can store on your device to remember information about your visit — for example, your preferences, or how you interact with the site. Cookies can be used for something as simple as remembering that you're logged in, or as involved as tracking your activity across many different websites for advertising purposes.</p>
+  
+    <h3>3. What this site actually does today</h3>
+    <p>As of the date at the top of this page, futureofinteriorspaces.com is a largely static site. It uses standard web fonts (Google Fonts) and an animation library (GSAP) to render its typography, layout, and movement effects, and browser-native, on-page effects such as a custom cursor and scroll-triggered animations — none of which involve setting cookies. The Site also includes a newsletter sign-up form and a contact link; neither currently sets any cookies.</p>
+  
+    <h3>4. If this changes</h3>
+    <p>If we later introduce functionality that does use cookies — for example, a live newsletter platform or an analytics tool — we will update this Cookie Policy first, describe clearly what is being set and why, and, where required by law, ask for your consent before doing so.</p>
+  
+    <h3>5. Controlling cookies in your browser</h3>
+    <p>Even though this Site does not currently set cookies, most browsers let you view, manage, and delete cookies set by any website through their settings (usually found under "Privacy" or "Site settings"). You can also configure your browser to block cookies by default, though doing so may affect how some other websites function.</p>
+  
+    <h3>6. Contact</h3>
+    <p>Questions about this Cookie Policy can be sent to <a href="mailto:hello@futureofinteriorspaces.com">hello@futureofinteriorspaces.com</a>.</p>
+    <p class="illustrative-note">This Cookie Policy is issued by Maven School of Interior Decoration and Design, operator of Future of Interior Spaces.</p>
+    </div>
+    </section>
+  
+    <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/">Back to Homepage</a></footer>
+    <script>
+    gsap.registerPlugin(ScrollTrigger);
+    const cursor = document.querySelector('.cursor'); const cursorDot = document.querySelector('.cursor-dot');
+    document.addEventListener('mousemove', (e) => { gsap.to(cursor, { x: e.clientX - 9, y: e.clientY - 9, duration: 0.15 }); gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.05 }); });
+    document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+    document.querySelectorAll('.reveal').forEach((el, i) => { gsap.to(el, { scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" }, opacity: 1, y: 0, duration: 1, delay: (i % 4) * 0.05, ease: "power3.out" }); });
+    </script></body></html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+    <html lang="en">
+    <head>
+    <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code of Conduct | Future of Interior Spaces</title>
+    <meta name="description" content="Code of Conduct for the FOIS Community, Conference and Awards — the standard of behavior we expect across Future of Interior Spaces.">
+    <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <style>
+    :root { --midnight: #0B1F33; --ivory: #F8F7F3; --gold: #C8A96A; --gold-light: #d4b87a; --graphite: #2E3135; --stone: #D8D7D2; --stone-light: #E8E7E2; --slate: #5F6770; }
+    * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; }
+    body { font-family: 'Inter', sans-serif; background: var(--ivory); color: var(--graphite); cursor: none; -webkit-font-smoothing: antialiased; }
+    .cursor { width: 18px; height: 18px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; mix-blend-mode: difference; }
+    .cursor.hover { transform: scale(2.2); } .cursor-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+    nav { position: fixed; top: 0; width: 100%; padding: 1.3rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11,31,51,0.96); backdrop-filter: blur(20px); }
+    .nav-logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); } .nav-logo em { color: var(--gold); font-style: italic; }
+    .nav-back { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,243,0.7); text-decoration: none; border: 1px solid rgba(248,247,243,0.25); padding: 0.65rem 1.4rem; }
+    .nav-back:hover { border-color: var(--gold); color: var(--gold); } @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } }
+    .report-hero { background: var(--midnight); color: var(--ivory); padding: 11rem 5rem 6rem; } @media (max-width: 700px) { .report-hero { padding: 9rem 1.8rem 4rem; } }
+    .report-breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; } .report-breadcrumb a { color: rgba(248,247,243,0.5); text-decoration: none; }
+    .report-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; max-width: 900px; margin-bottom: 1.5rem; } .report-title em { color: var(--gold); font-style: italic; }
+    .report-subtitle { font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 300; color: rgba(248,247,243,0.65); max-width: 640px; line-height: 1.75; margin-bottom: 2.5rem; }
+    section { padding: 6rem 5rem; max-width: 1300px; margin: 0 auto; } @media (max-width: 700px) { section { padding: 4rem 1.8rem; } }
+    .section-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; }
+    .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; margin-bottom: 1.6rem; max-width: 700px; } .section-title em { color: var(--gold); font-style: italic; }
+    .reading-col { max-width: 720px; } .reading-col p { font-family: 'Inter', sans-serif; font-size: 1.02rem; font-weight: 300; line-height: 1.9; color: var(--graphite); margin-bottom: 1.4rem; }
+    .reading-col h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 500; margin: 2rem 0 0.8rem; color: var(--graphite); }
+    .reading-col ul { margin: 0 0 1.4rem 1.3rem; } .reading-col li { font-family: 'Inter', sans-serif; font-size: 1.02rem; font-weight: 300; line-height: 1.85; color: var(--graphite); margin-bottom: 0.5rem; }
+    .illustrative-note { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--slate); font-style: italic; margin-top: 1.2rem; }
+    .draft-banner { background: var(--stone-light); border-left: 3px solid var(--gold); padding: 1.2rem 1.6rem; font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--graphite); line-height: 1.7; max-width: 720px; margin-bottom: 2rem; }
+    footer { background: #060e18; color: var(--ivory); padding: 3.5rem 5rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(248,247,243,0.4); } footer a { color: rgba(248,247,243,0.6); }
+    .reveal { opacity: 0; transform: translateY(40px); }
+    </style></head>
+    <body>
+    <div class="cursor"></div><div class="cursor-dot"></div>
+    <nav><a href="/" class="nav-logo">Future of Interior <em>Spaces</em></a><a href="/" class="nav-back">← Back to FOIS</a></nav>
+  
+    <section class="report-hero" style="max-width: none; margin: 0;"><div style="max-width: 1300px; margin: 0 auto;">
+    <p class="report-breadcrumb"><a href="/">Future of Interior Spaces</a> / Code of Conduct</p>
+    <h1 class="report-title">Code of <em>Conduct</em></h1>
+    <p class="report-subtitle">The standard of behavior we expect across the FOIS Community, Conference, and Awards.</p>
+    </div></section>
+  
+    <section class="reveal">
+    <div class="draft-banner"><strong>This is a draft.</strong> This Code of Conduct is a standard-form starting point for FOIS spaces and events, and has not yet been reviewed by a lawyer; it should be reviewed before being adopted as final policy.</div>
+    <p class="section-eyebrow">Community</p>
+    <h2 class="section-title">Code of <em>Conduct</em></h2>
+    <div class="reading-col">
+    <p>Last updated: September 2026</p>
+  
+    <h3>1. Scope</h3>
+    <p>This Code of Conduct applies to everyone taking part in Future of Interior Spaces spaces, including the FOIS Community, the FOIS Conference, and FOIS Awards — whether interactions take place in person, such as at an event, or online, such as in community channels, comments, or correspondence connected to FOIS.</p>
+  
+    <h3>2. Expected behavior</h3>
+    <p>We want FOIS spaces to be welcoming, professional, and productive for everyone in the interior design industry. We expect everyone to:</p>
+    <ul>
+    <li>treat other participants, speakers, organizers, and staff with respect and courtesy;</li>
+    <li>engage professionally, including when in disagreement;</li>
+    <li>respect differences of background, experience, and perspective;</li>
+    <li>follow the reasonable instructions of event organizers and staff.</li>
+    </ul>
+  
+    <h3>3. Unacceptable behavior</h3>
+    <p>The following, among other things, will not be tolerated in FOIS spaces:</p>
+    <ul>
+    <li>harassment of any kind, including unwelcome comments about a person's identity or characteristics;</li>
+    <li>discriminatory remarks or jokes;</li>
+    <li>intimidation, threats, or deliberately disruptive behavior;</li>
+    <li>unwelcome physical contact or invasion of personal space;</li>
+    <li>sustained disruption of talks, sessions, or community discussions.</li>
+    </ul>
+  
+    <h3>4. Reporting a concern</h3>
+    <p>If you experience or witness behavior that concerns you in a FOIS space, please report it to <a href="mailto:hello@futureofinteriorspaces.com">hello@futureofinteriorspaces.com</a>. Please include as much detail as you're comfortable sharing — what happened, when and where, and who was involved — so we can look into it properly.</p>
+  
+    <h3>5. What happens next</h3>
+    <p>Reports are reviewed by FOIS. Depending on the circumstances, this may result in a warning, removal from an event or community space, or exclusion from future FOIS activities, at FOIS's discretion. Where someone is removed from an event under this Code, no refund will be given.</p>
+  
+    <h3>6. A living document</h3>
+    <p>This Code of Conduct may be updated from time to time as FOIS's community, conference, and awards programming grow. The most current version will always be posted here.</p>
+    <p class="illustrative-note">This Code of Conduct is issued by Maven School of Interior Decoration and Design, operator of Future of Interior Spaces.</p>
+    </div>
+    </section>
+  
+    <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/">Back to Homepage</a></footer>
+    <script>
+    gsap.registerPlugin(ScrollTrigger);
+    const cursor = document.querySelector('.cursor'); const cursorDot = document.querySelector('.cursor-dot');
+    document.addEventListener('mousemove', (e) => { gsap.to(cursor, { x: e.clientX - 9, y: e.clientY - 9, duration: 0.15 }); gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.05 }); });
+    document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+    document.querySelectorAll('.reveal').forEach((el, i) => { gsap.to(el, { scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" }, opacity: 1, y: 0, duration: 1, delay: (i % 4) * 0.05, ease: "power3.out" }); });
+    </script></body></html>
