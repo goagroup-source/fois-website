@@ -52,7 +52,7 @@
         /* Sector Breakdown */
         .sector-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5px; background: var(--stone); border: 1px solid var(--stone); margin-top: 1rem; }
         @media (max-width: 700px) { .sector-grid { grid-template-columns: 1fr; } }
-        .sector-block { background: var(--ivory); padding: 2.3rem 2rem; }
+        .sector-block { background: var(--ivory); padding: 2.3rem 2rem; min-width: 0; }
         .sector-name { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; margin-bottom: 0.6rem; }
         .sector-desc { font-family: 'Inter', sans-serif; font-size: 0.85rem; color: var(--slate); line-height: 1.7; }
 
@@ -66,10 +66,11 @@
         .country-chart { background: var(--stone-light); padding: 3rem; margin-top: 1rem; }
         .chart-title { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.15rem; margin-bottom: 2rem; }
         .chart-bars { display: flex; align-items: flex-end; gap: 1.2rem; height: 190px; }
-        .chart-bar-wrap { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
+        .chart-bar-wrap { flex: 1; min-width: 0; display: flex; flex-direction: column; align-items: center; justify-content: flex-end; height: 100%; }
         .chart-bar { width: 100%; background: linear-gradient(to top, var(--gold), var(--gold-light)); }
         .chart-bar-label { margin-top: 0.7rem; font-family: 'Inter', sans-serif; font-size: 0.66rem; color: var(--slate); text-align: center; }
         .illustrative-note { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--slate); font-style: italic; margin-top: 1.2rem; }
+        .sources-list { margin-top: 1rem; border-top: 1px solid var(--stone); } .sources-list li { list-style: none; padding: 1.1rem 0; border-bottom: 1px solid var(--stone); font-family: 'Inter', sans-serif; font-size: 0.9rem; } .sources-list a { color: var(--graphite); } .sources-list a:hover { color: var(--gold); }
 
         /* Related */
         .related-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1rem; }
@@ -120,7 +121,7 @@
         <p class="section-eyebrow">Overview</p>
         <h2 class="section-title">A Mature Market Under <em>Renewed Pressure</em></h2>
         <div class="reading-col reveal">
-            <p>The United Kingdom remains one of the most established interior design markets FOIS Intelligence tracks, anchored by London's position as a global hub for high-end residential, hospitality and workplace design. Growth is increasingly coming from outside the capital, however, as Manchester, Edinburgh and Bristol build design-led commercial and mixed-use pipelines of their own.</p>
+            <p>The United Kingdom remains one of the most established interior design markets FOIS Intelligence tracks, anchored by London's position as a global hub for high-end residential, hospitality and workplace design. Growth is increasingly coming from outside the capital, however, as Manchester, Edinburgh and Bristol build design-led commercial and mixed-use pipelines of their own. Grand View Research sizes the UK interior design market at roughly $9.8B in 2025, forecasting growth to $15.8B by 2033 at a 6.2% CAGR, with commercial fit-out now the larger and faster-growing half of that spend — see Sources below.</p>
             <p>Two forces are shaping specification decisions in the UK more than anywhere else FOIS Intelligence covers: tightening embodied-carbon regulation in commercial retrofit, and a hybrid-work-driven reallocation of office floor plates toward hospitality-grade amenity space.</p>
         </div>
     </section>
@@ -156,19 +157,17 @@
     <section style="background: var(--stone-light); max-width: none;">
         <div style="max-width:1300px; margin:0 auto;">
             <p class="section-eyebrow">Data Highlight</p>
-            <h2 class="section-title">UK Commission Activity by <em>Sector</em></h2>
+            <h2 class="section-title">Market share by <em>region</em>, 2025</h2>
             <div class="country-chart reveal">
-                <p class="chart-title">Share of new UK commissions tracked, by sector</p>
+                <p class="chart-title">UK interior design market share by region (%)</p>
                 <div class="chart-bars">
-                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:74%;"></div><div class="chart-bar-label">Workplace</div></div>
-                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:61%;"></div><div class="chart-bar-label">Residential</div></div>
-                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:49%;"></div><div class="chart-bar-label">Hospitality</div></div>
-                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:38%;"></div><div class="chart-bar-label">Heritage Reuse</div></div>
-                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:29%;"></div><div class="chart-bar-label">Education</div></div>
-                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:24%;"></div><div class="chart-bar-label">Healthcare</div></div>
+                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:80%;"></div><div class="chart-bar-label">London & South East</div></div>
+                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:50%;"></div><div class="chart-bar-label">Midlands & North</div></div>
+                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:30%;"></div><div class="chart-bar-label">Scotland & Wales</div></div>
+                    <div class="chart-bar-wrap"><div class="chart-bar" style="height:30%;"></div><div class="chart-bar-label">South West & NI</div></div>
                 </div>
             </div>
-            <p class="illustrative-note">Illustrative sample data — will be replaced with verified figures as FOIS Intelligence's UK research programme publishes.</p>
+            <p class="illustrative-note">Figures are drawn from Credence Research's United Kingdom Interior Design Market report (2023 base year, 2024–2032 forecast) and Grand View Research's UK Interior Design Market Outlook (2025 base year, 2026–2033 forecast); see Sources below. FOIS Intelligence has not conducted an independent survey of this market.</p>
         </div>
     </section>
 
@@ -196,6 +195,19 @@
                 <a href="/intelligence/library/?country=United+States" class="country-pill">United States</a>
             </div>
         </div>
+    </section>
+
+    <!-- Sources -->
+    <section>
+        <p class="section-eyebrow reveal">Sources</p>
+        <h2 class="section-title reveal">Cited research</h2>
+        <ul class="sources-list reveal">
+            <li><a href="https://www.grandviewresearch.com/horizon/outlook/interior-design-market/uk" target="_blank" rel="noopener">Grand View Research — UK Interior Design Market Size &amp; Outlook, 2026–2033</a></li>
+            <li><a href="https://www.credenceresearch.com/report/united-kingdom-interior-design-market" target="_blank" rel="noopener">Credence Research — United Kingdom Interior Design Market Size, Growth and Forecast to 2032</a></li>
+            <li><a href="https://www.ibisworld.com/united-kingdom/industry/interior-design-activities/14549/" target="_blank" rel="noopener">IBISWorld — Interior Design Activities in the UK, Industry Analysis</a></li>
+            <li><a href="https://www.cbre.co.uk/insights/reports/office-occupancy-benchmark-report-2025" target="_blank" rel="noopener">CBRE UK — Office Occupier Benchmark Report 2025</a></li>
+            <li><a href="https://ukgbc.org/wp-content/uploads/2024/01/Retrofitting-Office-Buildings-Building-the-Case-for-Net-Zero.pdf" target="_blank" rel="noopener">UK Green Building Council — Retrofitting Office Buildings: Building the Case for Net Zero</a></li>
+        </ul>
     </section>
 
     <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/intelligence/">Back to FOIS Intelligence</a></footer>
