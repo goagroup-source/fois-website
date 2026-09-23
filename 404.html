@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+  <html lang="en">
+  <head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Page Not Found | Future of Interior Spaces</title>
+  <meta name="description" content="The page you're looking for doesn't exist or has moved. Explore FOIS Journal, Intelligence, Academy, Awards, Conference and Community instead.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/assets/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <style>
+  :root { --midnight: #0B1F33; --ivory: #F8F7F3; --gold: #C8A96A; --gold-light: #d4b87a; --graphite: #2E3135; --stone: #D8D7D2; --stone-light: #E8E7E2; --slate: #5F6770; }
+  * { margin: 0; padding: 0; box-sizing: border-box; } html { scroll-behavior: smooth; }
+  body { font-family: 'Inter', sans-serif; background: var(--ivory); color: var(--graphite); cursor: none; -webkit-font-smoothing: antialiased; }
+  .cursor { width: 18px; height: 18px; border: 1.5px solid var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; transition: transform 0.15s ease; mix-blend-mode: difference; }
+  .cursor.hover { transform: scale(2.2); } .cursor-dot { width: 4px; height: 4px; background: var(--gold); border-radius: 50%; position: fixed; pointer-events: none; z-index: 9999; }
+  nav { position: fixed; top: 0; width: 100%; padding: 1.3rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11,31,51,0.96); backdrop-filter: blur(20px); }
+  .nav-logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); } .nav-logo em { color: var(--gold); font-style: italic; }
+  .nav-back { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,243,0.7); text-decoration: none; border: 1px solid rgba(248,247,243,0.25); padding: 0.65rem 1.4rem; }
+  .nav-back:hover { border-color: var(--gold); color: var(--gold); }
+  .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: transparent; border: 1px solid rgba(248, 247, 243, 0.25); cursor: pointer; z-index: 200; position: relative; flex-shrink: 0; }
+  .nav-hamburger span { display: block; width: 18px; height: 1px; background: var(--ivory); transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+  .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+  .mobile-menu { position: fixed; inset: 0; background: var(--midnight); z-index: 90; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.4rem; opacity: 0; visibility: hidden; transform: translateY(-20px); transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s linear 0.4s; padding: 6rem 2rem 3rem; }
+  .mobile-menu.open { opacity: 1; visibility: visible; transform: translateY(0); transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s linear 0s; }
+  .mobile-menu-links { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 1.3rem; }
+  .mobile-menu-links a { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--ivory); text-decoration: none; transition: color 0.3s ease; }
+  .mobile-menu-links a:hover, .mobile-menu-links a:active { color: var(--gold); }
+  body.menu-open { overflow: hidden; }
+  @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } .nav-hamburger { display: flex; } .nav-back { display: none; } }
+  .report-hero { background: var(--midnight); color: var(--ivory); padding: 11rem 5rem 6rem; text-align: center; } @media (max-width: 700px) { .report-hero { padding: 9rem 1.8rem 4rem; } }
+  .error-code { font-family: 'Cormorant Garamond', serif; font-size: clamp(4rem, 12vw, 8rem); font-weight: 300; color: var(--gold); line-height: 1; margin-bottom: 0.5rem; font-style: italic; }
+  .report-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2rem, 4vw, 3rem); font-weight: 300; line-height: 1.1; margin: 0 auto 1.5rem; } .report-title em { color: var(--gold); font-style: italic; }
+  .report-subtitle { font-family: 'Inter', sans-serif; font-size: 1.05rem; font-weight: 300; color: rgba(248,247,243,0.65); max-width: 560px; line-height: 1.75; margin: 0 auto 2.5rem; }
+  .report-cta-group { display: flex; gap: 1.2rem; flex-wrap: wrap; justify-content: center; }
+  .btn-primary { padding: 1.05rem 2.6rem; background: var(--gold); color: var(--midnight); border: none; font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 600; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; text-decoration: none; display: inline-block; overflow-wrap: anywhere; } .btn-primary:hover { background: var(--gold-light); transform: translateY(-3px); }
+  .btn-secondary { padding: 1.05rem 2.6rem; background: transparent; color: var(--ivory); border: 1px solid rgba(248,247,243,0.25); font-family: 'Inter', sans-serif; font-size: 0.74rem; font-weight: 400; letter-spacing: 0.16em; text-transform: uppercase; cursor: pointer; transition: all 0.4s ease; text-decoration: none; display: inline-block; overflow-wrap: anywhere; } .btn-secondary:hover { border-color: var(--gold); color: var(--gold); }
+  section { padding: 6rem 5rem; max-width: 1300px; margin: 0 auto; } @media (max-width: 700px) { section { padding: 4rem 1.8rem; } }
+  .section-eyebrow { font-family: 'Inter', sans-serif; font-size: 0.7rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.4rem; text-align: center; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; margin: 0 auto 1.6rem; max-width: 700px; text-align: center; } .section-title em { color: var(--gold); font-style: italic; }
+  .related-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.5rem; margin-top: 2.5rem; } @media (max-width: 900px) { .related-grid { grid-template-columns: repeat(2, 1fr); } } @media (max-width: 500px) { .related-grid { grid-template-columns: 1fr; } }
+  .related-card { text-decoration: none; color: inherit; border: 1px solid var(--stone); padding: 2rem; display: block; transition: border-color 0.3s ease; min-width: 0; text-align: center; } .related-card:hover { border-color: var(--gold); }
+  .related-tag { font-family: 'Inter', sans-serif; font-size: 0.66rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.8rem; } .related-title { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; }
+  footer { background: #060e18; color: var(--ivory); padding: 3.5rem 5rem; text-align: center; font-family: 'Inter', sans-serif; font-size: 0.8rem; color: rgba(248,247,243,0.4); } footer a { color: rgba(248,247,243,0.6); }
+  .reveal { opacity: 0; transform: translateY(40px); }
+  </style></head>
+  <body>
+  <div class="cursor"></div><div class="cursor-dot"></div>
+  <nav><a href="/" class="nav-logo">Future of Interior <em>Spaces</em></a><a href="/" class="nav-back">← Back to FOIS</a><button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button></nav>
+
+  <div class="mobile-menu" id="mobileMenu">
+      <ul class="mobile-menu-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="/journal/">Journal</a></li>
+          <li><a href="/intelligence/">Intelligence</a></li>
+          <li><a href="/tv/">TV</a></li>
+          <li><a href="/academy/">Academy</a></li>
+          <li><a href="/awards/">Awards</a></li>
+          <li><a href="/conference/">Conference</a></li>
+          <li><a href="/community/">Community</a></li>
+          <li><a href="/contact/">Contact</a></li>
+      </ul>
+  </div>
+
+  <section class="report-hero" style="max-width: none; margin: 0;"><div style="max-width: 800px; margin: 0 auto;">
+  <div class="error-code">404</div>
+  <h1 class="report-title">This page doesn't <em>exist</em></h1>
+  <p class="report-subtitle">The page you're looking for may have moved, been renamed, or never existed. Here's how to find what you need instead.</p>
+  <div class="report-cta-group"><a href="/" class="btn-primary">Back to Homepage</a><a href="/intelligence/" class="btn-secondary">Browse FOIS Intelligence</a></div>
+  </div></section>
+
+  <section class="reveal">
+  <p class="section-eyebrow">Where to Go</p>
+  <h2 class="section-title">Explore the <em>platform</em></h2>
+  <div class="related-grid">
+  <a href="/journal/" class="related-card"><div class="related-tag">Read</div><div class="related-title">FOIS Journal</div></a>
+  <a href="/intelligence/" class="related-card"><div class="related-tag">Research</div><div class="related-title">FOIS Intelligence</div></a>
+  <a href="/tv/" class="related-card"><div class="related-tag">Watch</div><div class="related-title">FOIS TV</div></a>
+  <a href="/academy/" class="related-card"><div class="related-tag">Learn</div><div class="related-title">FOIS Academy</div></a>
+  <a href="/awards/" class="related-card"><div class="related-tag">Celebrate</div><div class="related-title">FOIS Awards</div></a>
+  <a href="/conference/" class="related-card"><div class="related-tag">Attend</div><div class="related-title">FOIS Conference</div></a>
+  <a href="/community/" class="related-card"><div class="related-tag">Connect</div><div class="related-title">FOIS Community</div></a>
+  <a href="/contact/" class="related-card"><div class="related-tag">Reach Us</div><div class="related-title">Contact</div></a>
+  </div>
+  </section>
+
+  <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/">Back to Homepage</a></footer>
+  <script>
+  gsap.registerPlugin(ScrollTrigger);
+  const cursor = document.querySelector('.cursor'); const cursorDot = document.querySelector('.cursor-dot');
+  document.addEventListener('mousemove', (e) => { gsap.to(cursor, { x: e.clientX - 9, y: e.clientY - 9, duration: 0.15 }); gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.05 }); });
+  document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
+  document.querySelectorAll('.reveal').forEach((el, i) => { gsap.to(el, { scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" }, opacity: 1, y: 0, duration: 1, delay: (i % 4) * 0.05, ease: "power3.out" }); });
+  const hamburger = document.getElementById('navHamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  function openMobileMenu() { mobileMenu.classList.add('open'); hamburger.setAttribute('aria-expanded', 'true'); document.body.classList.add('menu-open'); }
+  function closeMobileMenu() { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); document.body.classList.remove('menu-open'); }
+  if (hamburger) { hamburger.addEventListener('click', () => { mobileMenu.classList.contains('open') ? closeMobileMenu() : openMobileMenu(); }); }
+  if (mobileMenu) { mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileMenu)); }
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobileMenu(); });
+  window.addEventListener('resize', () => { if (window.innerWidth > 700) closeMobileMenu(); });
+  </script></body></html>

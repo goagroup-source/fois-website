@@ -34,7 +34,20 @@
   nav { position: fixed; top: 0; width: 100%; padding: 1.3rem 5rem; display: flex; justify-content: space-between; align-items: center; z-index: 100; background: rgba(11,31,51,0.96); backdrop-filter: blur(20px); }
   .nav-logo { text-decoration: none; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--ivory); } .nav-logo em { color: var(--gold); font-style: italic; }
   .nav-back { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(248,247,243,0.7); text-decoration: none; border: 1px solid rgba(248,247,243,0.25); padding: 0.65rem 1.4rem; }
-  .nav-back:hover { border-color: var(--gold); color: var(--gold); } @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } }
+  .nav-back:hover { border-color: var(--gold); color: var(--gold); }
+        .nav-hamburger { display: none; flex-direction: column; justify-content: center; align-items: center; gap: 5px; width: 40px; height: 40px; background: transparent; border: 1px solid rgba(248, 247, 243, 0.25); cursor: pointer; z-index: 200; position: relative; flex-shrink: 0; }
+        .nav-hamburger span { display: block; width: 18px; height: 1px; background: var(--ivory); transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+        .nav-hamburger[aria-expanded="true"] span:nth-child(1) { transform: translateY(5px) rotate(45deg); }
+        .nav-hamburger[aria-expanded="true"] span:nth-child(2) { opacity: 0; }
+        .nav-hamburger[aria-expanded="true"] span:nth-child(3) { transform: translateY(-5px) rotate(-45deg); }
+        .mobile-menu { position: fixed; inset: 0; background: var(--midnight); z-index: 90; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 1.4rem; opacity: 0; visibility: hidden; transform: translateY(-20px); transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s linear 0.4s; padding: 6rem 2rem 3rem; }
+        .mobile-menu.open { opacity: 1; visibility: visible; transform: translateY(0); transition: opacity 0.4s ease, transform 0.4s ease, visibility 0s linear 0s; }
+        .mobile-menu-links { list-style: none; text-align: center; display: flex; flex-direction: column; gap: 1.3rem; }
+        .mobile-menu-links a { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 300; color: var(--ivory); text-decoration: none; transition: color 0.3s ease; }
+        .mobile-menu-links a:hover, .mobile-menu-links a:active { color: var(--gold); }
+        body.menu-open { overflow: hidden; }
+        @media (max-width: 700px) { .nav-hamburger { display: flex; } .nav-back { display: none; } }
+         @media (max-width: 700px) { nav { padding: 1rem 1.5rem; } }
   .report-hero { background: var(--midnight); color: var(--ivory); padding: 11rem 5rem 6rem; } @media (max-width: 700px) { .report-hero { padding: 9rem 1.8rem 4rem; } }
   .report-breadcrumb { font-family: 'Inter', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold); margin-bottom: 2rem; } .report-breadcrumb a { color: rgba(248,247,243,0.5); text-decoration: none; }
   .report-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.4rem, 5vw, 4rem); font-weight: 300; line-height: 1.1; max-width: 900px; margin-bottom: 1.5rem; } .report-title em { color: var(--gold); font-style: italic; }
@@ -64,7 +77,21 @@
   </style></head>
   <body>
   <div class="cursor"></div><div class="cursor-dot"></div>
-  <nav><a href="/intelligence/" class="nav-logo">FOIS <em>Intelligence</em></a><a href="/intelligence/" class="nav-back">← All Research</a></nav>
+  <nav><a href="/intelligence/" class="nav-logo">FOIS <em>Intelligence</em></a><a href="/intelligence/" class="nav-back">← All Research</a><button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu"><span></span><span></span><span></span></button></nav>
+    <div class="mobile-menu" id="mobileMenu">
+        <ul class="mobile-menu-links">
+            <li><a href="/">Home</a></li>
+            <li><a href="/journal/">Journal</a></li>
+            <li><a href="/intelligence/">Intelligence</a></li>
+            <li><a href="/tv/">TV</a></li>
+            <li><a href="/academy/">Academy</a></li>
+            <li><a href="/awards/">Awards</a></li>
+            <li><a href="/conference/">Conference</a></li>
+            <li><a href="/community/">Community</a></li>
+            <li><a href="/contact/">Contact</a></li>
+        </ul>
+    </div>
+
   
   <section class="report-hero" style="max-width: none; margin: 0;"><div style="max-width: 1300px; margin: 0 auto;">
   <p class="report-breadcrumb"><a href="/intelligence/">FOIS Intelligence</a> / Country Intelligence</p>
@@ -160,6 +187,15 @@
   <footer>© 2026 Future of Interior Spaces. A Global Initiative by Maven School of Interior Decoration and Design. <a href="/intelligence/">Back to FOIS Intelligence</a></footer>
   <script>
   gsap.registerPlugin(ScrollTrigger);
+        const hamburger = document.getElementById('navHamburger');
+        const mobileMenu = document.getElementById('mobileMenu');
+        function openMobileMenu() { mobileMenu.classList.add('open'); hamburger.setAttribute('aria-expanded', 'true'); document.body.classList.add('menu-open'); }
+        function closeMobileMenu() { mobileMenu.classList.remove('open'); hamburger.setAttribute('aria-expanded', 'false'); document.body.classList.remove('menu-open'); }
+        if (hamburger) { hamburger.addEventListener('click', () => { mobileMenu.classList.contains('open') ? closeMobileMenu() : openMobileMenu(); }); }
+        if (mobileMenu) { mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMobileMenu)); }
+        document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeMobileMenu(); });
+        window.addEventListener('resize', () => { if (window.innerWidth > 700) closeMobileMenu(); });
+        
   const cursor = document.querySelector('.cursor'); const cursorDot = document.querySelector('.cursor-dot');
   document.addEventListener('mousemove', (e) => { gsap.to(cursor, { x: e.clientX - 9, y: e.clientY - 9, duration: 0.15 }); gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.05 }); });
   document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
