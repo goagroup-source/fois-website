@@ -27,26 +27,46 @@ This repo mirrors the exact folder structure expected at the web root
 
 ## Deploying a change
 
-This repo is the source of truth; it does **not** auto-deploy. After
-editing:
+Pushing to `main` auto-deploys via `.github/workflows/deploy.yml`
+(GitHub Actions → FTPS on push), which mirrors this repo to
+`public_html` on the host (currently Namehero), excluding `.git/`,
+`.github/`, `docs/`, `README.md` and `CHANGELOG.md`.
 
-1. Commit your change here.
-2. Zip the folder (excluding `.git/` and `docs/`) or use cPanel File
-   Manager / FTP to upload just the changed file(s) to the matching
-   path under `public_html` on the host (currently Namehero).
-3. If nothing appears to update, purge the LiteSpeed cache (cPanel →
-   LiteSpeed Cache Manager).
+**One-time setup** (needed before the first run succeeds): in the
+GitHub repo, go to Settings → Secrets and variables → Actions → New
+repository secret, and add:
 
-A CI-based auto-deploy (GitHub Action → FTP/SFTP on push) can be added
-later if manual re-uploads become tedious — ask if you want that set up.
+- `FTP_SERVER` — the FTP/FTPS hostname from the NameHero cPanel FTP
+  Accounts page (often `ftp.futureofinteriorspaces.com` or a
+  `server###.namehero.com`-style host)
+- `FTP_USERNAME` — the cPanel FTP username
+- `FTP_PASSWORD` — the cPanel FTP password
+- `FTP_SERVER_DIR` — only needed if the live document root isn't
+  `public_html/` (e.g. an addon-domain subfolder); the workflow
+  defaults to `public_html/` if this secret is unset
+
+Never put these values in this repo, a commit, or a chat message —
+only in the GitHub secret fields above, which are encrypted and never
+shown again once saved.
+
+Check progress under the repo's **Actions** tab after a push. If a run
+fails, that tab shows exactly where (usually a wrong secret or a doc
+root mismatch); the site simply doesn't update until it's fixed — a
+failed deploy doesn't affect what's already live.
+
+If nothing appears to update after a successful run, purge the
+LiteSpeed cache (cPanel → LiteSpeed Cache Manager).
+
+**Manual fallback** (still works, e.g. for a same-minute emergency
+fix): zip the folder (excluding `.git/`, `.github/` and `docs/`) or use
+cPanel File Manager / FTP to upload just the changed file(s) directly.
 
 ## Known gaps (tracked, not yet built)
 
-- **Deploy is still manual.** Every commit here needs a separate upload
-  to the live host (see "Deploying a change" above) — pushing to GitHub
-  does not update `futureofinteriorspaces.com` by itself. Set up the
-  GitHub Action auto-deploy mentioned above if manual re-uploads become
-  tedious.
+- Auto-deploy (`.github/workflows/deploy.yml`) needs its FTP secrets
+  added in GitHub before it will actually run successfully — see
+  "Deploying a change" above. Until then, pushes to `main` will show a
+  failing Action rather than a silent no-op.
 - Newsletter signup (homepage, FOIS Intelligence, FOIS Journal) posts to
   a live Formspree endpoint (`assets/newsletter.js`) but hasn't had a
   real end-to-end test submission confirmed in the connected inbox yet.
