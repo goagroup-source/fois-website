@@ -3,7 +3,7 @@
     // To go live: create a free form at https://formspree.io, then replace
     // YOUR_FORM_ID below with the real form ID (e.g. https://formspree.io/f/abcdwxyz).
     // All newsletter forms on the site share this one endpoint/file.
-    var NEWSLETTER_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+    var NEWSLETTER_ENDPOINT = "https://formspree.io/f/xaenjbrg";
     var CONTACT_EMAIL = "hello@futureofinteriorspaces.com";
 
     function init() {
