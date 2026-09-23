@@ -17,8 +17,12 @@ This repo mirrors the exact folder structure expected at the web root
 | `intelligence/state-of-interior-spaces-2027/index.html` | `/intelligence/state-of-interior-spaces-2027/` | Flagship annual report |
 | `intelligence/country/united-kingdom/index.html` | `/intelligence/country/united-kingdom/` | UK Country Intelligence |
 | `intelligence/interview-ageing-populations/index.html` | `/intelligence/interview-ageing-populations/` | Interview article template |
-| `intelligence/dashboard/index.html` | `/intelligence/dashboard/` | Member dashboard (static concept — needs an account system to go live) |
-| `assets/` | `/assets/` | Static assets — **upload your logo here as `fois-logo.png`**, see `assets/README.txt` |
+| `intelligence/dashboard/index.html` | `/intelligence/dashboard/` | Member dashboard (static concept — needs an account system to go live; `noindex`) |
+| `conference/index.html` | `/conference/` | FOIS Conference (standalone page) |
+| `community/index.html` | `/community/` | FOIS Community (standalone page) |
+| `404.html` | *(served on any unmatched URL — host-dependent config)* | Branded 404 page |
+| `assets/` | `/assets/` | Static assets — logo (`fois-logo.png`), favicons, OG/social card, `newsletter.js` |
+| `sitemap.xml`, `robots.txt` | `/sitemap.xml`, `/robots.txt` | SEO — canonical domain: `futureofinteriorspaces.com` |
 | `docs/FOIS-Intelligence-Concept.md` | *(not deployed)* | Information architecture, editorial system, design system and content strategy reference — internal only |
 
 ## Deploying a change
@@ -38,16 +42,25 @@ later if manual re-uploads become tedious — ask if you want that set up.
 
 ## Known gaps (tracked, not yet built)
 
-- Logo image (`/assets/fois-logo.png`) is a placeholder path — upload
-  the real file.
-- Several "related report" links inside the Research Library point at
-  individual report permalinks (e.g. `/intelligence/future-workplace-report/`)
-  that don't have pages built yet — they'll 404 until those pages exist.
-  See `docs/FOIS-Intelligence-Concept.md` §12.2 for the full build-order
-  recommendation.
-- No mobile hamburger menu on the sub-pages with minimal nav (report
-  template, country page, dashboard, interview) — not needed yet since
-  those only have two nav items, but flag if that nav grows.
+- **Deploy is still manual.** Every commit here needs a separate upload
+  to the live host (see "Deploying a change" above) — pushing to GitHub
+  does not update `futureofinteriorspaces.com` by itself. Set up the
+  GitHub Action auto-deploy mentioned above if manual re-uploads become
+  tedious.
+- Newsletter signup (homepage, FOIS Intelligence, FOIS Journal) posts to
+  a live Formspree endpoint (`assets/newsletter.js`) but hasn't had a
+  real end-to-end test submission confirmed in the connected inbox yet.
+- Homepage "Global Advisory Board" section is a deliberate "coming soon"
+  placeholder — no names until real ones are confirmed.
+- Intelligence member dashboard (`/intelligence/dashboard/`) is a static
+  concept only; it needs a real account/auth system to go live, which is
+  a separate build.
+- No analytics installed — the Privacy Policy and Cookie Policy both
+  explicitly disclose this; add one only alongside a policy update, not
+  silently.
+- All hamburger/mobile-nav pages, favicons, social cards, sitemap, and
+  the Research Library's report cross-links are done — this list no
+  longer tracks those.
 
 ## Design system
 
