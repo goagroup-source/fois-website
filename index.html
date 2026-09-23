@@ -27,6 +27,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="/assets/newsletter.js"></script>
     <style>
         :root {
             --midnight: #0B1F33;
@@ -2448,10 +2449,14 @@
             <h2 class="section-title">Be the First to Know About <em>Future of Interior Spaces</em></h2>
             <p class="section-desc">Get early access to research, speaker announcements and exclusive content from the platform.</p>
             
-            <form class="newsletter-form" onsubmit="event.preventDefault(); this.innerHTML='<p style=\'color:var(--gold); font-family:Inter; font-size:0.9rem;\'>Thank you for subscribing to FOIS.</p>';">
-                <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+            <form class="newsletter-form" id="newsletterForm">
+                <input type="email" name="email" id="newsletterEmail" class="newsletter-input" placeholder="Enter your email address" required>
+                <input type="hidden" name="list" value="FOIS General">
+                <input type="hidden" name="_subject" value="New FOIS newsletter signup">
+                <input type="text" name="_gotcha" style="display:none" tabindex="-1" autocomplete="off">
                 <button type="submit" class="newsletter-btn">Subscribe</button>
             </form>
+            <p class="newsletter-msg" style="display:none;"></p>
             <button class="btn-secondary" style="margin-top: 1.5rem;">Become a Founding Member</button>
         </div>
     </section>
