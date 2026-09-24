@@ -129,7 +129,7 @@
   <p class="section-eyebrow">Stay Informed</p>
   <h2 class="section-title">Be first to <em>read</em> it</h2>
   <p>Sign up to receive FOIS Journal pieces as they publish — no spam, just editorial worth your time, direct from the FOIS newsroom.</p>
-  <form class="newsletter-form" id="newsletterForm">
+  <form class="newsletter-form" id="newsletterForm" action="https://formspree.io/f/xaenjbrg" method="POST">
   <input class="newsletter-input" type="email" name="email" id="newsletterEmail" placeholder="your@email.com" required>
   <input type="hidden" name="list" value="FOIS Journal">
   <input type="hidden" name="_subject" value="New FOIS Journal signup">
@@ -155,4 +155,36 @@
   document.addEventListener('mousemove', (e) => { gsap.to(cursor, { x: e.clientX - 9, y: e.clientY - 9, duration: 0.15 }); gsap.to(cursorDot, { x: e.clientX - 2, y: e.clientY - 2, duration: 0.05 }); });
   document.querySelectorAll('a, button').forEach(el => { el.addEventListener('mouseenter', () => cursor.classList.add('hover')); el.addEventListener('mouseleave', () => cursor.classList.remove('hover')); });
   document.querySelectorAll('.reveal').forEach((el, i) => { gsap.to(el, { scrollTrigger: { trigger: el, start: "top 90%", toggleActions: "play none none none" }, opacity: 1, y: 0, duration: 1, delay: (i % 4) * 0.05, ease: "power3.out" }); });
+
+  // Newsletter form submission (Formspree)
+  const newsletterForm = document.getElementById('newsletterForm');
+  if (newsletterForm) {
+      newsletterForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          const msg = newsletterForm.nextElementSibling;
+          const btn = newsletterForm.querySelector('button[type="submit"]');
+          const originalText = btn ? btn.textContent : '';
+          if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+          fetch(newsletterForm.action, {
+              method: 'POST',
+              body: new FormData(newsletterForm),
+              headers: { 'Accept': 'application/json' }
+          }).then(response => {
+              if (msg) {
+                  msg.style.display = 'block';
+                  msg.textContent = response.ok
+                      ? "Thanks — you're on the list."
+                      : "Something went wrong. Please try again or email hello@futureofinteriorspaces.com.";
+              }
+              if (response.ok) newsletterForm.reset();
+          }).catch(() => {
+              if (msg) {
+                  msg.style.display = 'block';
+                  msg.textContent = "Something went wrong. Please try again or email hello@futureofinteriorspaces.com.";
+              }
+          }).finally(() => {
+              if (btn) { btn.disabled = false; btn.textContent = originalText; }
+          });
+      });
+  }
   </script></body></html>

@@ -2454,7 +2454,7 @@
             <h2 class="section-title">Be the First to Know About <em>Future of Interior Spaces</em></h2>
             <p class="section-desc">Get early access to research, speaker announcements and exclusive content from the platform.</p>
             
-            <form class="newsletter-form" id="newsletterForm">
+            <form class="newsletter-form" id="newsletterForm" action="https://formspree.io/f/xaenjbrg" method="POST">
                 <input type="email" name="email" id="newsletterEmail" class="newsletter-input" placeholder="Enter your email address" required>
                 <input type="hidden" name="list" value="FOIS General">
                 <input type="hidden" name="_subject" value="New FOIS newsletter signup">
@@ -2770,6 +2770,38 @@
             }
         `;
         document.head.appendChild(style);
+
+        // Newsletter form submission (Formspree)
+        const newsletterForm = document.getElementById('newsletterForm');
+        if (newsletterForm) {
+            newsletterForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const msg = newsletterForm.nextElementSibling;
+                const btn = newsletterForm.querySelector('button[type="submit"]');
+                const originalText = btn ? btn.textContent : '';
+                if (btn) { btn.disabled = true; btn.textContent = 'Sending...'; }
+                fetch(newsletterForm.action, {
+                    method: 'POST',
+                    body: new FormData(newsletterForm),
+                    headers: { 'Accept': 'application/json' }
+                }).then(response => {
+                    if (msg) {
+                        msg.style.display = 'block';
+                        msg.textContent = response.ok
+                            ? "Thanks — you're on the list."
+                            : "Something went wrong. Please try again or email hello@futureofinteriorspaces.com.";
+                    }
+                    if (response.ok) newsletterForm.reset();
+                }).catch(() => {
+                    if (msg) {
+                        msg.style.display = 'block';
+                        msg.textContent = "Something went wrong. Please try again or email hello@futureofinteriorspaces.com.";
+                    }
+                }).finally(() => {
+                    if (btn) { btn.disabled = false; btn.textContent = originalText; }
+                });
+            });
+        }
     </script>
 </body>
 </html>
