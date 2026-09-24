@@ -120,6 +120,7 @@
         .nav-logo {
             display: flex; align-items: center; gap: 1.2rem;
             text-decoration: none;
+            flex-shrink: 0;
         }
         .nav-logo img { 
             height: 42px; 
@@ -142,11 +143,12 @@
             display: block;
             font-size: 0.68rem;
             font-family: 'Inter', sans-serif;
-            letter-spacing: 0.25em;
+            letter-spacing: 0.1em;
             text-transform: uppercase;
             opacity: 0.6;
             margin-top: 2px;
             font-weight: 400;
+            white-space: nowrap;
         }
 
         .nav-links {
@@ -1135,6 +1137,7 @@
             background: var(--midnight);
             color: var(--ivory);
         }
+        .illustrative-note { font-family: 'Inter', sans-serif; font-size: 0.75rem; color: var(--slate); font-style: italic; margin-top: 1.2rem; }
         .ticket-btn:hover {
             transform: translateY(-2px);
             box-shadow: 0 12px 35px rgba(200, 169, 106, 0.25);
@@ -1351,7 +1354,7 @@
         .footer-desc {
             font-family: 'Inter', sans-serif;
             font-size: 0.85rem;
-            color: rgba(248, 247, 243, 0.4);
+            color: rgba(248, 247, 243, 0.6);
             line-height: 1.8;
             max-width: 320px;
             font-weight: 300;
@@ -1368,7 +1371,7 @@
         .footer-col ul { list-style: none; }
         .footer-col li { margin-bottom: 0.9rem; }
         .footer-col a {
-            color: rgba(248, 247, 243, 0.45);
+            color: rgba(248, 247, 243, 0.7);
             text-decoration: none;
             font-family: 'Inter', sans-serif;
             font-size: 0.85rem;
@@ -1811,8 +1814,8 @@
             <li><a href="#about">About</a></li>
         </ul>
         <div class="nav-cta-group">
-            <button class="nav-cta">Attend Conference</button>
-            <button class="nav-cta-primary">Join FOIS</button>
+            <a href="/conference/" class="nav-cta" style="text-decoration:none;">Attend Conference</a>
+            <a href="/community/" class="nav-cta-primary" style="text-decoration:none;">Join FOIS</a>
         </div>
         <button class="nav-hamburger" id="navHamburger" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
             <span></span><span></span><span></span>
@@ -1832,8 +1835,8 @@
             <li><a href="#about">About</a></li>
         </ul>
         <div class="mobile-menu-cta">
-            <button class="btn-secondary" style="color:var(--ivory); border-color:rgba(248,247,243,0.3);" id="mobileMenuAttend">Attend Conference</button>
-            <button class="btn-primary">Join FOIS</button>
+            <a href="/conference/" class="btn-secondary" style="color:var(--ivory); border-color:rgba(248,247,243,0.3); text-decoration:none;" id="mobileMenuAttend">Attend Conference</a>
+            <a href="/community/" class="btn-primary" style="text-decoration:none;">Join FOIS</a>
         </div>
     </div>
 
@@ -1853,8 +1856,8 @@
             <p class="hero-promise" style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.4rem; opacity:0.9; margin-bottom:0.5rem;">The Global Platform Shaping Tomorrow's Spaces</p>
             <p class="hero-promise">Future of Interior Spaces (FOIS) is the global platform where design, architecture, property, technology and innovation converge to shape how people live, work, learn, heal and connect.</p>
             <div class="hero-cta-group">
-                <button class="btn-primary">Explore FOIS</button>
-                <button class="btn-secondary">Join the Community</button>
+                <a href="#platform-overview" class="btn-primary" style="text-decoration:none;">Explore FOIS</a>
+                <a href="/community/" class="btn-secondary" style="text-decoration:none;">Join the Community</a>
             </div>
         </div>
     </section>
@@ -1989,7 +1992,7 @@
         <p class="manifesto-eyebrow">Why It Matters</p>
         <h2 class="manifesto-title">The World Is Changing Faster Than Our Spaces</h2>
         <div class="manifesto-list reveal">
-            <span>Remote work.</span><span>Artificial Intelligence.</span><span>Climate change.</span><span>Healthcare.</span><span>Ageing populations.</span><span>Housing shortages.</span><span>Education.</span><span>Retail.</span><span>Hospitality.</span>
+            <span>Remote work.</span><span>Artificial intelligence.</span><span>Climate change.</span><span>Healthcare.</span><span>Ageing populations.</span><span>Housing shortages.</span><span>Education.</span><span>Retail.</span><span>Hospitality.</span>
         </div>
         <p class="manifesto-close reveal">Every one of these changes begins with space. The future cannot be designed by one profession alone. FOIS exists because those conversations need a permanent home.</p>
     </section>
@@ -2127,7 +2130,7 @@
             <div class="advisory-seat">Seat 06</div>
         </div>
         <p style="margin-top: 3rem; font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.15rem; color: var(--gold);" class="reveal">Advisory Board — Coming Soon</p>
-        <button class="btn-secondary" style="margin-top: 1.5rem;">Nominate an Advisor</button>
+        <a href="mailto:hello@futureofinteriorspaces.com?subject=Advisory%20Board%20Nomination" class="btn-secondary" style="margin-top: 1.5rem; text-decoration:none; display:inline-block;">Nominate an Advisor</a>
     </section>
 
 
@@ -2142,22 +2145,22 @@
             <div class="membership-tier reveal">
                 <h3 class="membership-tier-name">FOIS Member</h3>
                 <p class="membership-tier-desc">Access to the Journal, Intelligence reports and community events. The starting point for anyone shaping interior spaces.</p>
-                <span class="membership-tier-cta">Join as Member</span>
+                <a href="mailto:hello@futureofinteriorspaces.com?subject=Membership%20Interest%20-%20FOIS%20Member" class="membership-tier-cta" style="text-decoration:none; color:inherit;">Join as Member</a>
             </div>
             <div class="membership-tier reveal">
                 <h3 class="membership-tier-name">FOIS Professional</h3>
                 <p class="membership-tier-desc">Full platform access, regional chapter events and discounted conference passes for working practitioners.</p>
-                <span class="membership-tier-cta">Join as Professional</span>
+                <a href="mailto:hello@futureofinteriorspaces.com?subject=Membership%20Interest%20-%20FOIS%20Professional" class="membership-tier-cta" style="text-decoration:none; color:inherit;">Join as Professional</a>
             </div>
             <div class="membership-tier featured reveal">
                 <h3 class="membership-tier-name">FOIS Fellow</h3>
                 <p class="membership-tier-desc">Recognition for individuals shaping the industry, with a voice in FOIS Awards and Advisory Board nominations.</p>
-                <span class="membership-tier-cta">Enquire About Fellowship</span>
+                <a href="mailto:hello@futureofinteriorspaces.com?subject=Fellowship%20Enquiry" class="membership-tier-cta" style="text-decoration:none; color:inherit;">Enquire About Fellowship</a>
             </div>
             <div class="membership-tier reveal">
                 <h3 class="membership-tier-name">FOIS Corporate</h3>
                 <p class="membership-tier-desc">Organisation-wide access for studios, manufacturers and developers, with team passes and partnership pathways.</p>
-                <span class="membership-tier-cta">Enquire for Teams</span>
+                <a href="mailto:hello@futureofinteriorspaces.com?subject=Corporate%20Membership%20Enquiry" class="membership-tier-cta" style="text-decoration:none; color:inherit;">Enquire for Teams</a>
             </div>
         </div>
     </section>
@@ -2243,11 +2246,11 @@
             <div class="about-content reveal">
                 <p class="section-eyebrow">The Voices</p>
                 <h2 class="section-title">Visionaries Shaping the <em>Future of Space</em></h2>
-                <p class="about-story">Each year, the FOIS stage brings together the designers, architects and spatial thinkers redefining how we live, work and gather — curated by our Advisory Board for the depth of their ideas, not the size of their following.</p>
+                <p class="about-story">Each year, the FOIS stage will bring together the designers, architects and spatial thinkers redefining how we live, work and gather — selected for the depth of their ideas, not the size of their following.</p>
                 <p class="about-story" style="font-family:'Cormorant Garamond', serif; font-style:italic; font-size:1.2rem; opacity:0.9;">Call for Speakers is now open for September 2027.</p>
                 <div class="hero-cta-group" style="opacity:1; transform:none; margin-top:1.5rem;">
-                    <button class="btn-primary">Apply to Speak</button>
-                    <button class="btn-secondary">Nominate a Speaker</button>
+                    <a href="/speak/" class="btn-primary" style="text-decoration:none;">Apply to Speak</a>
+                    <a href="mailto:hello@futureofinteriorspaces.com?subject=Speaker%20Nomination" class="btn-secondary" style="text-decoration:none;">Nominate a Speaker</a>
                 </div>
             </div>
         </div>
@@ -2260,6 +2263,7 @@
             <p class="section-eyebrow">The Programme</p>
             <h2 class="section-title">Four Days of <em>Curated Discovery</em></h2>
             <p class="section-desc">From intimate morning salons to evening keynotes, every moment is designed to spark connection and creativity.</p>
+            <p class="illustrative-note">Illustrative programme — session titles and speakers shown are indicative of the format; the confirmed schedule for the first edition will be announced closer to September 2027.</p>
         </div>
         
         <div class="schedule-tabs reveal">
@@ -2362,6 +2366,7 @@
             <p class="section-eyebrow">Conference Access</p>
             <h2 class="section-title">Join the <em>Flagship Gathering</em></h2>
             <p class="section-desc">Passes for the September 2027 conference in London. Every ticket includes access to keynotes, exhibitions and networking events.</p>
+            <p class="illustrative-note">Indicative pricing and tiers for the first edition — registration has not yet opened, and final pricing will be confirmed nearer the date. Use the buttons below to register your interest.</p>
         </div>
         <div class="tickets-grid">
             <div class="ticket-card reveal">
@@ -2374,7 +2379,7 @@
                     <li>Networking lunch</li>
                     <li>Digital resources</li>
                 </ul>
-                <button class="ticket-btn">Select Day Pass</button>
+                <a href="mailto:hello@futureofinteriorspaces.com?subject=Conference%20Interest%20-%20Day%20Pass" class="ticket-btn" style="text-decoration:none; display:inline-block; text-align:center;">Register Interest — Day Pass</a>
             </div>
             <div class="ticket-card featured reveal">
                 <p class="ticket-tier">Full Conference</p>
@@ -2388,7 +2393,7 @@
                     <li>Gala dinner invitation</li>
                     <li>1-year community access</li>
                 </ul>
-                <button class="ticket-btn">Get Full Access</button>
+                <a href="mailto:hello@futureofinteriorspaces.com?subject=Conference%20Interest%20-%20Full%20Conference%20Pass" class="ticket-btn" style="text-decoration:none; display:inline-block; text-align:center;">Register Interest — Full Conference</a>
             </div>
             <div class="ticket-card reveal">
                 <p class="ticket-tier">VIP Experience</p>
@@ -2402,7 +2407,7 @@
                     <li>Luxury accommodation</li>
                     <li>Concierge service</li>
                 </ul>
-                <button class="ticket-btn">Apply for VIP</button>
+                <a href="mailto:hello@futureofinteriorspaces.com?subject=Conference%20Interest%20-%20VIP%20Experience" class="ticket-btn" style="text-decoration:none; display:inline-block; text-align:center;">Register Interest — VIP</a>
             </div>
         </div>
     </section>
@@ -2415,8 +2420,8 @@
             <h2 class="section-title">Build FOIS <em>From the Beginning</em></h2>
             <p class="section-desc">FOIS is inviting a small number of manufacturers, technology companies and institutions to help shape the platform as founding partners — before the roster is announced.</p>
             <div class="hero-cta-group" style="opacity:1; transform:none; margin-top:1.5rem;">
-                <button class="btn-primary">Become a Founding Partner</button>
-                <button class="btn-secondary">Partnership Enquiries</button>
+                <a href="/sponsor/" class="btn-primary" style="text-decoration:none;">Become a Founding Partner</a>
+                <a href="mailto:hello@futureofinteriorspaces.com?subject=Partnership%20Enquiry" class="btn-secondary" style="text-decoration:none;">Partnership Enquiries</a>
             </div>
         </div>
     </section>
@@ -2457,7 +2462,7 @@
                 <button type="submit" class="newsletter-btn">Subscribe</button>
             </form>
             <p class="newsletter-msg" style="display:none;"></p>
-            <button class="btn-secondary" style="margin-top: 1.5rem;">Become a Founding Member</button>
+            <a href="mailto:hello@futureofinteriorspaces.com?subject=Founding%20Member%20Interest" class="btn-secondary" style="margin-top: 1.5rem; text-decoration:none; display:inline-block;">Become a Founding Member</a>
         </div>
     </section>
 
