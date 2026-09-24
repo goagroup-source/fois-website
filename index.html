@@ -118,12 +118,12 @@
         }
 
         .nav-logo {
-            display: flex; align-items: center; gap: 1.2rem;
+            display: flex; flex-direction: column; align-items: flex-start; gap: 0.3rem;
             text-decoration: none;
             flex-shrink: 0;
         }
-        .nav-logo img { 
-            height: 42px; 
+        .nav-logo img {
+            height: 42px;
             width: auto;
             filter: brightness(0) invert(1);
             transition: filter 0.4s ease;
@@ -132,21 +132,13 @@
             filter: brightness(0) invert(1);
         }
         .nav-logo-text {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            font-weight: 400;
-            color: var(--ivory);
-            letter-spacing: 0.02em;
-            line-height: 1.3;
-        }
-        .nav-logo-text span {
             display: block;
-            font-size: 0.68rem;
+            font-size: 0.6rem;
             font-family: 'Inter', sans-serif;
             letter-spacing: 0.1em;
             text-transform: uppercase;
+            color: var(--ivory);
             opacity: 0.6;
-            margin-top: 2px;
             font-weight: 400;
             white-space: nowrap;
         }
@@ -1801,7 +1793,7 @@
     <nav id="navbar">
         <a href="/" class="nav-logo">
             <img src="/assets/fois-logo.png" alt="Future of Interior Spaces">
-            <span class="nav-logo-text">Future of Interior Spaces<span>A Global Initiative of Maven SIDD</span></span>
+            <span class="nav-logo-text">A Global Initiative of Maven SIDD</span>
         </a>
         <ul class="nav-links">
             <li><a href="#platform-overview">Platform</a></li>
